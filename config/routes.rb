@@ -9,9 +9,17 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+<<<<<<< Updated upstream
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
+=======
+
+
+
+    root to: 'homes#top'
+    get 'home/about' => 'homes#about', as: 'about'
+>>>>>>> Stashed changes
     resources :items, only: [:index, :show]
     resource :customers, only: [:show, :edit, :update]
     get 'customers/confirm' => 'customers#confirm', as: 'customer_confirm'
@@ -22,7 +30,11 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm', as: 'orders_confirm'
     get 'orders/complete' => 'orders#complete', as: 'orders_complete'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+<<<<<<< Updated upstream
   end
+=======
+
+>>>>>>> Stashed changes
 
   namespace :admin do
     root to: 'homes#top'
@@ -32,6 +44,9 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
   end
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
