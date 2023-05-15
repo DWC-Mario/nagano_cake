@@ -1,2 +1,2 @@
-class ItemsController < ApplicationController
+class Public::ItemsController < ApplicationController
 end
