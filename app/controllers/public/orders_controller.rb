@@ -1,5 +1,5 @@
-class OrdersController < ApplicationController
-  
+class Public::OrdersController < ApplicationController
+
   def new
   end
 
@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
 
   def complete
   end
-  
+
   def create
   end
 
@@ -17,5 +17,5 @@ class OrdersController < ApplicationController
 
   def show
   end
-  
+
 end
