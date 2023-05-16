@@ -11,7 +11,7 @@
     <% else %>
       <%= image_tag 'no_image', size: "200x200" %>
     <% end %>
-    
+
     <div class="item-comment">
       <span class="item_name"><%=link_to item.name, item_path(item.id) %></span>
        <span class="price"><%= price %></span>
