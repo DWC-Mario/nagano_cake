@@ -1,2 +1,20 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="mb-8 text-center">
+  <span class="text-3xl font-bold">
+<h2><%= @item.item_name %></h2>　
+<!--↑ここに商品名-->
+ </span>
+</div>
+<div class="item-box">
+     <% if item.image.attached? %>
+      <%= image_tag item.image, size: "400x400" %>
+    <% else %>
+      <%= image_tag 'no_image', size: "400x400" %>
+    <% end %>
+    
+    <span class="price"><%= price %></span>
+     <span class="item_explanation"><%= item_explanation %></span>
+      <span class="genre_id"><%= genre_id %></span>
+      <span class="is_active"><%= is_active %></span>
+      
+</div>
+

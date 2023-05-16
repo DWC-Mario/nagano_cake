@@ -1,2 +1,22 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class="mb-8 text-center">
+  <span class="text-3xl font-bold">
+  <h1>商品一覧</h1>
+  </span>
+</div>
+<div class="flex flex-wrap justify-center md:justify-start px-5">
+  <% @items.each do |item| %>
+  <div class="item-box">
+     <% if item.image.attached? %>
+      <%= image_tag item.image, size: "200x200" %>
+    <% else %>
+      <%= image_tag 'no_image', size: "200x200" %>
+    <% end %>
+    
+    <div class="item-comment">
+      <span class="item_name"><%=link_to item.name, item_path(item.id) %></span>
+       <span class="price"><%= price %></span>
+    </div>
+  </div>
+  <% end %>
+</div>
+
