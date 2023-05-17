@@ -5,11 +5,8 @@
  </span>
 </div>
 <div class="item-box">
-     <% if item.image.attached? %>
-      <%= image_tag item.image, size: "400x400" %>
-    <% else %>
-      <%= image_tag 'no_image', size: "400x400" %>
-    <% end %>
+      <%= image_tag @item.get_image %>
+    
     
     <span class="price"><%= price %></span>
      <span class="item_explanation"><%= item_explanation %></span>

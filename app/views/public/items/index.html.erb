@@ -6,14 +6,9 @@
 <div class="flex flex-wrap justify-center md:justify-start px-5">
   <% @items.each do |item| %>
   <div class="item-box">
-     <% if item.image.attached? %>
-      <%= image_tag item.image, size: "200x200" %>
-    <% else %>
-      <%= image_tag 'no_image', size: "200x200" %>
-    <% end %>
-
-    <div class="item-comment">
-      <span class="item_name"><%=link_to item.name, item_path(item.id) %></span>
+      <%= image_tag item.get_image %>
+      
+      <span class="item_name"><%=link_to "#{item.name}", item_path(item.id) %></span>
        <span class="price"><%= price %></span>
     </div>
   </div>
