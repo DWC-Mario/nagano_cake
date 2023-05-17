@@ -5,4 +5,8 @@ class Item < ApplicationRecord
   has_many :cart_items
   has_many :ordering_items
   
+  def tax_inculuded_price
+    (price * 1.1).floor
+  end
+  
 end
