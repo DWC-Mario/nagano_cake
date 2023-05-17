@@ -19,9 +19,9 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
     resources :cart_items, only: [:index, :update, :destroy, :create]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
-    resources :orders, only: [:new, :index, :create, :show]
     post 'orders/confirm' => 'orders#confirm', as: 'orders_confirm'
     get 'orders/complete' => 'orders#complete', as: 'orders_complete'
+    resources :orders, only: [:new, :index, :create, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
