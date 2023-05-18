@@ -1,25 +1,28 @@
 <div class="container">
-  <h5 class="d-inline bg-light">ログイン</h5><br>
-    <h6 class="d-inline bg-light">会員の方はこちらからログイン</h6>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="m-3"><h5 class="d-inline bg-light">ログイン</h5></div>
+    <div class="m-3"><h6 class="d-inline bg-light">会員の方はこちらからログイン</h6></div>
+    <div class="m-3">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
-      <table>
+      <table class="table table-borderless">
         <!--bootstrapが当たらない-->
         <tr>
         <tr>
-          <td class="col-6 py-1"><%= f.label :email, "メールアドレス"%></td>
-          <td class="col-6"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          <td class="col-2 py-1"><%= f.label :email, "メールアドレス"%></td>
+          <td class="col-5"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></td>
         </tr>
         <tr>
-          <td class="col-6 py-1"><%= f.label :password, "パスワード(6文字以上)" %></td>
-          <td class="col-6"><%= f.password_field :password, autocomplete: "current-password" %></td>
+          <td class="py-1"><%= f.label :password, "パスワード" %></td>
+          <td class=""><%= f.password_field :password, autocomplete: "current-password", class: "form-control" %></td>
         </tr>
         <tr>
-          <td class="col-6 py-1"></td>
-          <td class="col-6"><%= f.submit "ログイン", class: "btn btn-primary btn-block" %></td>
+          <td class="py-1"></td>
+          <td class=""><%= f.submit "ログイン", class: "btn btn-primary form-control", style: "width: 30%" %></td>
         </tr>
       </table>
     <% end %>
+    </div>
+    
       
     <h5 class="d-inline bg-light">会員登録がお済みでない方</h5>
 
