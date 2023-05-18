@@ -13,7 +13,7 @@ class Order < ApplicationRecord
     shipped: 4
   }
   
-  belongs_to :address
+  belong
   belongs_to :customer
   has_many :ordering_items
   
