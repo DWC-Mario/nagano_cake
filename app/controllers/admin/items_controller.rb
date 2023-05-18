@@ -6,6 +6,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
+     @items = @item.new
   end
 
   def show
