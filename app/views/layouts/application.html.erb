@@ -11,6 +11,11 @@
   </head>
 
   <body>
+      <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
+
+       ログアウト
+
+      <% end %>
     <%= yield %>
   </body>
 </html>

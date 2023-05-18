@@ -1,37 +1,27 @@
 <div class="container">
-  <div class="row no-gutters">
-  <h2>ログイン</h2>
-    <div class="col-md-10 col-sm-10 mx-2 mx-sm-auto px-0 my-5">
-      <h5>会員の方はこちらからログイン</h5>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <table>
-          <tr>
-            <td>
-              <%= f.label :email, "メールアドレス" %>
-            </td>
-            <td>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= f.label :password, "パスワード" %>
-            </td>
-            <td>
-              <%= f.password_field :password, autocomplete: "current-password" %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= f.submit "ログイン" %>
-            </td>
-          </tr>
-        </table>
-      <% end %>
-      <h5>会員登録がお済みでない方</h5>
-      <p>
-        <%= render "public/shared/links" %>から新規登録を行なってください。
-      </p>
-    </div>
-  </div>
+  <h5 class="d-inline bg-light">ログイン</h5><br>
+    <h6 class="d-inline bg-light">会員の方はこちらからログイン</h6>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
+      <table>
+        <!--bootstrapが当たらない-->
+        <tr>
+        <tr>
+          <td class="col-6 py-1"><%= f.label :email, "メールアドレス"%></td>
+          <td class="col-6"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <td class="col-6 py-1"><%= f.label :password, "パスワード(6文字以上)" %></td>
+          <td class="col-6"><%= f.password_field :password, autocomplete: "current-password" %></td>
+        </tr>
+        <tr>
+          <td class="col-6 py-1"></td>
+          <td class="col-6"><%= f.submit "ログイン", class: "btn btn-primary btn-block" %></td>
+        </tr>
+      </table>
+    <% end %>
+      
+    <h5 class="d-inline bg-light">会員登録がお済みでない方</h5>
+
+  <p><%= render "public/shared/links" %>から新規登録を行なってください。</p>
 </div>

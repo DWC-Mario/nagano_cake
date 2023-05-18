@@ -1,0 +1,60 @@
+<div class="container">
+	<h5 class="d-inline bg-light">マイページ</h5>
+	<div class="row py-4">
+		<h6 class="my-auto mx-4 font-weight-bold">登録情報</h6>
+		<%= link_to edit_customers_path do %>
+			<button class="btn btn-success">編集する</button>
+		<% end %>
+	</div>
+	<table class="table table-bordered">
+		<tr>
+			<td class="col-4 bg-light">氏名</td>
+			<td class="col-8"><%= @customer.last_name %>　<%= @customer.first_name %></td>
+		</tr>
+		<tr>
+			<td class="bg-light">カナ</td>
+			<td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
+		</tr>
+		<tr>
+			<td class="bg-light">郵便番号</td>
+			<td><%= @customer.post_code %></td>
+		</tr>
+		<tr>
+			<td class="bg-light">住所</td>
+			<td><%= @customer.address %></td>
+		</tr>
+		<tr>
+			<td class="bg-light">電話番号</td>
+			<td><%= @customer.phone_number %></td>
+		</tr>
+		<tr>
+			<td class="bg-light">メールアドレス</td>
+			<td><%= @customer.email %></td>
+		</tr>
+		<tr>
+			<td class="bg-primary">退会フラグ（後で消す！！）</td>
+			<td><%= @customer.is_active %></td>
+		</tr>
+	</table>
+
+	<table>
+		<tr>
+			<td class="py-4"><h6 class="my-auto mx-4 font-weight-bold ">配送先</h6></td>
+			<td>
+				<%= link_to addresses_path do %>
+					<button class="btn btn-primary">一覧を見る</button>
+				<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td><h6 class="my-auto mx-4 font-weight-bold ">注文履歴</h6></td>
+			<td>
+				<%= link_to orders_path do %>
+					<button class="btn btn-primary">一覧を見る</button>
+				<% end %>
+			</td>
+		</tr>
+	</table>
+
+
+</div>
