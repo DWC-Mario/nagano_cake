@@ -30,7 +30,7 @@
                 <td>
                   <%= cart_item.subtotal %>
                 </td>
-                <% @total_price += cart_item.subtotal %>
+                <% @sum += cart_item.subtotal %>
               </tr>
             <% end %>
           </tbody>
@@ -44,11 +44,11 @@
           </tr>
           <tr>
             <td class="table-secondary">商品合計</td>
-            <td><%= @total_price %></td>
+            <td><%= @sum %></td>
           </tr>
           <tr>
             <td class="table-secondary">請求金額</td>
-            <td><%= @postage + @total_price %></td>
+            <td><%= @postage + @sum %></td>
           </tr>
         </table>
       </td>
@@ -66,7 +66,17 @@
   </div>
   <div class="row">
     <span class="px-3 mx-auto">
-      <%= link_to '注文を確定する', new_order_path, class:"btn btn-sm btn-success" %>
+    <%= form_with model: @order, url: orders_path, method: :post, local:true do |f| %>
+      <!--<= f.hidden_field :customer_id, value: current_customer_id %>-->
+      <%= f.hidden_field :postage, value: @postage %>
+      <%= f.hidden_field :total_price, value: @postage + @sum %>
+      <%= f.hidden_field :how_to_pay, value: @order.how_to_pay %>
+      <%= f.hidden_field :post_code, value: @order.post_code %>
+      <%= f.hidden_field :address, value: @order.address %>
+      <%= f.hidden_field :address_name, value: @order.address_name %>
+      <!--<= f.hidden_field :order_status, value: @order.order_status %>-->
+      <%= f.submit "注文確定する", class:"btn btn-sm btn-success" %>
+    <% end %>
     </span>
   </div>
 </div>
