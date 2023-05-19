@@ -29,6 +29,7 @@ class Public::CustomersController < ApplicationController
     customer = current_customer
     customer.is_active = false
     customer.save
+    session.clear
     redirect_to root_path
   end
 
