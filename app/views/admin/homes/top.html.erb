@@ -11,19 +11,24 @@
           <th class="bg-light">購入日時</th>
           <th class="bg-light">購入者</th>
           <th class="bg-light">注文個数</th>
-          <th class="bg-light">注文ステータス</th>
+          <th class="bg-primary">注文ステータス（日本語化する）</th>
         </tr>
          <% @orders.each do |order| %>
           <tr>
             <td>
-              <%= order.created_at %>
+              <%= link_to admin_order_path(order) do %>
+                <span class="text-dark text-decoration-underline">
+                  <%= order.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M:%S') %>
+                </span>
+              <% end %>
             </td>
             <td>
               <%= order.customer.last_name %>
               <%= order.customer.first_name %>
             </td>
             <td>
-              <!--購入個数のコードが入る-->
+              <% total_quantity = order.ordering_items.sum(:count) %>
+              <%= total_quantity %>
             </td>
             <td>
               <%= order.order_status %>
@@ -31,4 +36,8 @@
           </tr>
         <% end %>
       </table>
+      <div class="d-flex justify-content-center">
+        <%= paginate @orders %>
+      </div>
+      
   </div>
