@@ -1,17 +1,18 @@
-<div class="mb-8 text-center">
-  <span class="text-3xl font-bold">
-<h2><%= @item.item_name %></h2>　
-<!--↑ここに商品名-->
- </span>
-</div>
-<div class="item-box">
-      <%= image_tag @item.get_image %>
-    
-    
-    <span class="price"><%= price %></span>
-     <span class="item_explanation"><%= item_explanation %></span>
-      <span class="genre_id"><%= genre_id %></span>
-      <span class="is_active"><%= is_active %></span>
-      
+<div class="container">
+    <div class="row">
+       <div class="col-md-10 col-md-offset-1">
+         <p class="text-center">
+        <table>
+          <tr>
+           <th><%= image_tag @item.get_image(300,300) %></th> 
+           <td>
+             <h2><%= @item.item_name %></h2><br>
+             <h4>¥<%= @item.price %>(税込み)</h4><br>
+             <h5><%= @item.item_explanation %></h5>
+           </td>
+          </tr>
+        </table>
+       </div>
+    </div>
 </div>
 

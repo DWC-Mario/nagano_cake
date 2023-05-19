@@ -1,12 +1,12 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items=Item.all
+    @items=Item.all.page(params[:page]).per(8)
   end
 
   def show
-     @item = Item.find(params[:id])  
+     @item = Item.find(params[:id])
   end
-  
+
    private
   def item_params
     params.require(:item).permit(:title, :body, :image)  end
