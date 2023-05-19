@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row d-flex justify-content-between my-3 px-3">
+    <h4>注文情報確認</h4>
+  </div>
+  <table>
+    <tr>
+      <td>
+        <table class="table table-bordered">
+          <thead class="table-secondary">
+            <tr>
+              <th>商品名</th>
+              <th>単価（税込）</th>
+              <th>数量</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @cart_items.each do |cart_item| %>
+              <tr>
+                <td>
+                  <%= image_tag  cart_item.item.get_image(50,50) %>
+                  <%= cart_item.item.item_name %>
+                </td>
+                <td>
+                  <%= cart_item.item.tax_inculuded_price %>
+                </td>
+                <td>
+                  <%= cart_item.count %>
+                </td>
+                <td>
+                  <%= cart_item.subtotal %>
+                </td>
+                <% @total_price += cart_item.subtotal %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+      <td>
+        <table class="table table-bordered">
+          <tr>
+            <td class="table-secondary">送料</td>
+            <td><%= @postage %></td>
+          </tr>
+          <tr>
+            <td class="table-secondary">商品合計</td>
+            <td><%= @total_price %></td>
+          </tr>
+          <tr>
+            <td class="table-secondary">請求金額</td>
+            <td><%= @postage + @total_price %></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <div>
+    <h8>支払い方法</h8>
+    <%= @order.how_to_pay %>
+  </div>
+  <div>
+    <h8>宛名</h8>
+    <%= @order.post_code %><%= @order.address %><br>
+    <%= @order.address_name %>
+  </div>
+  </div>
+  <div class="row">
+    <span class="px-3 mx-auto">
+      <%= link_to '注文を確定する', new_order_path, class:"btn btn-sm btn-success" %>
+    </span>
+  </div>
+</div>
+
