@@ -11,7 +11,7 @@
           <th class="bg-light">購入日時</th>
           <th class="bg-light">購入者</th>
           <th class="bg-light">注文個数</th>
-          <th class="bg-primary">注文ステータス（日本語化する）</th>
+          <th class="bg-light">注文ステータス</th>
         </tr>
          <% @orders.each do |order| %>
           <tr>
@@ -31,7 +31,7 @@
               <%= total_quantity %>
             </td>
             <td>
-              <%= order.order_status %>
+              <%= t("enums.order.order_status.#{order.order_status}") %>
             </td>
           </tr>
         <% end %>
