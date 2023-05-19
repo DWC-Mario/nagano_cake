@@ -13,6 +13,9 @@ Customer.create(last_name:"山田",first_name:"太郎",last_name_kana:"ヤマダ
 Address.create(customer_id: 1, post_code: "1234567", address: "長野県松本市", address_name: "山田")
 
 Item.create(item_name: "シュークリーム" , item_explanation: "説明", genre_id: 1, price: 500, is_active: true)
+Item.create(item_name: "シフォンケーキ" , item_explanation: "説明", genre_id: 2, price: 500, is_active: true)
+Item.create(item_name: "マカロン" , item_explanation: "説明", genre_id: 2, price: 500, is_active: true)
+Item.create(item_name: "キャンディ" , item_explanation: "説明", genre_id: 3, price: 500, is_active: true)
 
 Order.create(customer_id: 1,post_code:"1234567",address:"長野県松本市",address_name:"山田",postage: 800,total_price: 1300,how_to_pay: 0,order_status: 0)
 

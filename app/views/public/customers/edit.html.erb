@@ -3,7 +3,6 @@
   <div class="my-4">
     <%= form_with model: @customer, url: customers_path, method: :patch do |f| %>
       <table>
-        <!--bootstrapが当たらない-->
         <tr>
           <td class="py-2">名前</td>
           <td><%= f.label :last_name, "(姓)"%></td>

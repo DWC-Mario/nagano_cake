@@ -5,8 +5,6 @@
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
       <table class="table table-borderless">
-        <!--bootstrapが当たらない-->
-        <tr>
         <tr>
           <td class="col-2 py-1"><%= f.label :email, "メールアドレス"%></td>
           <td class="col-5"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></td>
@@ -25,6 +23,7 @@
     
       
     <h5 class="d-inline bg-light">会員登録がお済みでない方</h5>
+
 
   <p><%= render "public/shared/links" %>から新規登録を行なってください。</p>
 </div>
