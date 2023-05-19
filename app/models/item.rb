@@ -18,6 +18,7 @@ class Item < ApplicationRecord
   item_image.variant(resize_to_limit: [width, height]).processed
 
  end
+ validates :price, presence: true
 
    enum sales_status: { on_sale: 0, draft: 1 }
 end

@@ -4,13 +4,26 @@
          <p class="text-center">
         <table>
           <tr>
-           <th><%= image_tag @item.get_image(300,300) %></th> 
+           <th><%= image_tag @item.get_image(400,400) %></th>
            <td>
              <h2><%= @item.item_name %></h2><br>
              <h4>¥<%= @item.price %>(税込み)</h4><br>
-             <h5><%= @item.item_explanation %></h5>
+             <h5><%= @item.item_explanation %></h5><br>
+           </tr>
+           <th></th>
+             <td>
+               <h5>
+                <!--% if @item.is_active == TRUE %>-->
+              <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true)do |f| %>
+               <%= f.label :count, "個数選択" %>
+                <%= f.select :count, [1,2,3,4,5,6,7,8,9,10] %>
+               <%= f.hidden_field :item_id, :value => @item.id %>
+                <%= f.submit "カートに入れる" %>
+
+                <% end %>
+                </h5>
+                 <!--% end %>-->
            </td>
-          </tr>
         </table>
        </div>
     </div>

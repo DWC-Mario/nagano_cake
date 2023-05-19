@@ -1,5 +1,11 @@
 <h1>商品一覧</h1>
-<%= link_to "new", new_admin_item_path, class: 'btn btn-default' %>
+<div class="row">
+ <li>
+ <%= link_to new_admin_item_path,class:"btn btn-outline-secondary" do %>
+ <i class="fa-solid fa-plus"></i>
+<% end %>
+</li>
+</div>
 <table class="table table-striped">
 <tr>
   <th>商品id</th> <th>商品名</th> <th>税抜き価格</th> <th>ジャンル</th> <th>ステータス</th>
@@ -10,4 +16,12 @@
  </tr>
  <% end %>
  </table>
-
+ <div class="container">
+  <div class="row">
+   <div class="col-md-2 col-md-offset-5">
+    <p class="text-center">
+   <%= paginate @items %>
+   </p>
+   </div>
+ </div>
+ </div>
