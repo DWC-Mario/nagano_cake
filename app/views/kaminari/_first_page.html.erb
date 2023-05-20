@@ -1,3 +1,6 @@
+<li class="page-item">
+  <%= link_to_unless current_page.first?, raw(t 'views.pagination.first'), url, remote: remote, class: 'page-link' %>
+</li>
 <%# Link to the "First" page
   - available local variables
     url:           url to the first page

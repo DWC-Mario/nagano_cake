@@ -1,2 +1,82 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class="container">
+  <div class="row my-3 px-3">
+    <div class="col-sm-12 mx-auto">
+      <h4>注文履歴詳細</h4>
+      <table>
+        <tr>
+          <td>
+            <table class="table table-bordered">
+              <h5>注文情報</h5>
+              <tr>
+                <td class="table-secondary">注文日</td>
+                <td><%= @order.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d') %></td>
+              </tr>
+              <tr>
+                <td class="table-secondary">配送先</td>
+                <td>
+                  〒<%= @order.post_code %><br>
+                  <%= @order.address %><br>
+                  <%= @order.address_name %>
+                </td>
+              </tr>
+              <tr>
+                <td class="table-secondary">支払方法</td>
+                <td><%= t("enums.order.how_to_pay.#{@order.how_to_pay}") %></td>
+              </tr>
+              <tr>
+                <td class="table-secondary">ステータス</td>
+                <td><%= t("enums.order.order_status.#{@order.order_status}") %></td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table class="table table-bordered">
+              <h5>請求情報</h5>
+              <tr>
+                <td class="table-secondary">商品合計</td>
+                <td><%= @sum %></td>
+              </tr>
+              <tr>
+                <td class="table-secondary">配送料</td>
+                <td><%= @order.postage %></td>
+              </tr>
+              <tr>
+                <td class="table-secondary">ご請求額</td>
+                <td><%= @order.total_price %></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <table class="table table-bordered">
+        <h5>注文内容</h5>
+        <thead class="table-secondary">
+          <tr>
+            <th>商品</th>
+            <th>単価（税込）</th>
+            <th>個数</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @ordering_items.each do |ordering_item| %>
+            <tr>
+              <td>
+                <%= ordering_item.item.item_name %>
+              </td>
+              <td>
+                <%= ordering_item.tax_included_price %>
+              </td>
+              <td>
+                <%= ordering_item.count %>
+              </td>
+              <td>
+                <%= ordering_item.subtotal %>円
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
