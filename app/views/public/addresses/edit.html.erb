@@ -1,2 +1,42 @@
-<h1>Public::Addresses#edit</h1>
-<p>Find me in app/views/public/addresses/edit.html.erb</p>
+
+ <% if @address.errors.any? %>
+  <%= @address.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p id="notice"></p> 
+
+<div class = "row">
+  <div class = " w-10 mx-auto mt-5" >
+    <div class = "center" >
+      
+          
+    <h4>配送先編集</h4>
+    <table>
+      <%= form_with model: @address do |f| %>
+        <tr>
+          <th><%= f.label :郵便番号（ハイフンなし） %></th>
+          <th><%= f.text_field :post_code %></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td><%= f.label :住所 %></td>
+          <td colspan="2"><%= f.text_field :address, :size=> "60" %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><%= f.label :宛名 %></td>
+          <td><%= f.text_field :address_name, :size=> "30" %></td>
+          <td></td>
+          <td><%= f.submit "変更内容を保存",class: 'btn btn-success' %></td>
+        </tr>
+      <% end %>
+    </table>
+    </div>
+  </div>
+</div>
