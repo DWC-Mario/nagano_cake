@@ -8,4 +8,12 @@ class Customer < ApplicationRecord
   has_many :addresses
   has_many :orders
 
+  def full_address
+    '〒'+ post_code + '' + address
+  end
+  
+  def full_name
+    last_name + first_name
+  end
+
 end
