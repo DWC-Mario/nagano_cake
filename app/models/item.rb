@@ -1,10 +1,15 @@
 class Item < ApplicationRecord
-  
+
   has_one_attached :item_image
   belongs_to :genre
   has_many :cart_items
   has_many :ordering_items
-  
+
+
+ validates :price, presence: true
+
+   enum sales_status: { on_sale: 0, draft: 1 }
+
 
   def tax_inculuded_price
     (price * 1.1).floor
@@ -17,5 +22,5 @@ class Item < ApplicationRecord
     end
     item_image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
 end

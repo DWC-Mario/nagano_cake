@@ -1,2 +1,41 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+
+ <div class="container">
+ <h4>商品詳細</h4>
+ <div class="row">
+     <div class="col-lg-4">
+     <%= image_tag @item.get_image(400,300) %>
+    </div>
+    <div class="col-lg-8">
+    <table class="table">
+     <tr>
+      <th></th> <td><h4><%= @item.item_name %></h4></td>
+     </tr>
+     <tr>
+      <th></th> <td><h5><%= @item.item_explanation %></h5></td>
+     </tr>
+     <tr>
+      <th></th>　<td><h5>¥<%= @item.price %>(税込)</h5></td>
+     </tr>
+     <tr>
+      <th></th>
+       <td>
+        <% if @item.is_active == true %>
+        <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true)do |f| %>
+        <%= f.label :count, "個数選択" %>
+        <%= f.select :count, [1,2,3,4,5,6,7,8,9,10] %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+       </td>
+       <td>
+        <%= f.submit "カートに入れる", class:"btn btn-success" %>
+        <% end %>
+         <% end %>
+        <% if @item.is_active == false %>
+        販売停止中
+        <% end %>
+       </td>
+    </tr>
+  </table>
+ </div>
+</div>
+</div>
+
