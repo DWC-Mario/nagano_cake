@@ -13,7 +13,7 @@
     <th>商品説明</th> <td> <%= f.text_area :item_explanation %></td>
   </tr>
   <tr>
-    <th>ジャンル</th> <td><%= f.select :genre_id, options_for_select([['--選択してください--', ''], ['ケーキ', '1'], ['焼き菓子', '2'], ['プリン', '3'], ['キャンディ', '4']]), {}, {class: 'mclist__select'} %></td>
+    <th>ジャンル</th> <td><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_name) %></td>
   </tr>
   <tr>
     <th>税抜き価格</th> <td><%= f.text_field :price %></td>
@@ -29,7 +29,7 @@
   </tr>
   <tr>
     <td>
-    <%= f.submit '新規登録' %>
+    <%= f.submit '新規登録', class:"btn btn-success" %>
     </td>
   </tr>
   <% end %>

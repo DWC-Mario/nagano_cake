@@ -1,7 +1,7 @@
 class Public::ItemsController < ApplicationController
   # before_action :authenticate_public!, only: [:show]
   def index
-    @items=Item.all.page(params[:page]).per(10)
+    @items=Item.all.page(params[:page]).per(8)
   end
 
   def show
