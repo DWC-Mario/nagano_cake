@@ -3,7 +3,6 @@
   　<h3>商品新規登録</h3>
 <%= form_with model: @item,url: admin_items_path do |f| %>
 <table>
-
   <tr>
     <th>商品画像</th> <td><%= f.file_field :item_image, accept: "image/*" %></td>
   </tr>

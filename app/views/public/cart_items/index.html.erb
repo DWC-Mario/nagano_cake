@@ -39,8 +39,8 @@
           <td>
             <%= link_to '削除する', cart_item_path(cart_item), method: :delete, class:"btn btn-sm btn-danger" %>
           </td>
-          <% @sum += cart_item.subtotal %>
         </tr>
+        <% @sum += cart_item.subtotal %>
       <% end %>
     </tbody>
   </table>
