@@ -23,7 +23,8 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @item = Item.find(cart_item_params[:item_id])
+    @item = Item.find(params[:cart_item][:item_id])
+
     @cart_item = current_customer.cart_items.find_by(item_id: @item.id)
     @cart_item_new = current_customer.cart_items.new(cart_item_params)
     if @cart_item.present?
@@ -31,7 +32,8 @@ class Public::CartItemsController < ApplicationController
       @cart_item.save
     else
       @cart_item_new.save
-      @cart_items = current_customer.cart_items.all
+      @cart_items = current_customer.cart_items
+      redirect_to cart_items_path
     end
     redirect_to cart_items_path
   end

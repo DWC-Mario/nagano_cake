@@ -5,7 +5,7 @@
         <p class="text-danger"><%= notice %></p>
       </p>
       <%= render 'errors', address: @address %>
-      
+
     <h3>配送先登録/一覧</h3>
       <%= form_with model: @address do |f| %>
         <table>
@@ -28,7 +28,7 @@
            </tr>
           </table>
         <% end %>
-      <div class = "mt-5" ></div>
+      <div class = "mt-5" >
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -51,6 +51,7 @@
           <% end %>
         </tbody>
       </table>
+      </div>
     </div>
   </div>
 </div>

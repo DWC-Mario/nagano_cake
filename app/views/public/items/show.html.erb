@@ -6,7 +6,7 @@
      <%= image_tag @item.get_image(400,300) %>
     </div>
     <div class="col-lg-8">
-    <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true)do |f| %>
+     <%= form_with(model: [@item, @cart_item],url: cart_items_path, method: :post,local: true)do |f| %>
     <table class="table">
      <tr>
       <th></th> <td><h4><%= @item.item_name %></h4></td>
