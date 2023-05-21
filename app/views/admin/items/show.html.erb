@@ -24,7 +24,7 @@
                  <% if @item.is_active == true %>
                  販売中
                  <% end %>
-                 <% elsif @item.is_active == false %>
+                 <% if @item.is_active == false %>
                  販売停止中
                  <% end %>
                 </td>
