@@ -13,7 +13,7 @@
                <th>商品説明</th> <td><h5><%= @item.item_explanation %></h5></td>
              </tr>
              <tr>
-               <th>ジャンル</th> <td><h5><%= @genre.genre_name %></h5></td>
+               <th>ジャンル</th> <td><h5><%= @item.genre.genre_name %></h5></td>
              </tr>
              <tr>
                <th><h5>税抜き価格<br>(税込み価格)</h5></th>　<td><h5><%= @item.price %> (<%= @price_in_tax %>)円</h5></td>
@@ -24,7 +24,7 @@
                  <% if @item.is_active == true %>
                  販売中
                  <% end %>
-                 <% if @item.is_active == false %>
+                 <% elsif @item.is_active == false %>
                  販売停止中
                  <% end %>
                 </td>
