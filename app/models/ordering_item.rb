@@ -8,8 +8,5 @@ class OrderingItem < ApplicationRecord
     tax_included_price * count
   end
 
-  def tax_included_price
-    (price * 1.1).floor
-  end
 
 end
