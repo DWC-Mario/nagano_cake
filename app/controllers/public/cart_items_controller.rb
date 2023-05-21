@@ -33,7 +33,6 @@ class Public::CartItemsController < ApplicationController
     else
       @cart_item_new.save
       @cart_items = current_customer.cart_items
-      redirect_to cart_items_path
     end
     redirect_to cart_items_path
   end
