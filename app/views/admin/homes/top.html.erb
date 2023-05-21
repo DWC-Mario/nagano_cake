@@ -1,5 +1,9 @@
 <div class="container">
-  <h5 class="d-inline bg-light">注文履歴一覧</h5>
+  <% if @customer.present? %>
+    <h5 class="d-inline bg-light"><%= @customer.full_name %>の注文一覧</h5>
+  <% else %>
+    <h5 class="d-inline bg-light">注文履歴一覧</h5>
+  <% end %>
   <div class="my-4">
       <table class="table">
         <tr>
@@ -34,5 +38,5 @@
       <div class="d-flex justify-content-center">
         <%= paginate @orders %>
       </div>
-      
+
   </div>
