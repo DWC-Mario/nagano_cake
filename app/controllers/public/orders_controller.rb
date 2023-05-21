@@ -40,7 +40,7 @@ class Public::OrdersController < ApplicationController
         ordering_item.order_id = @order.id
         ordering_item.item_id = cart_item.item.id
         ordering_item.count = cart_item.count
-        ordering_item.tax_included_price = cart_item.item.tax_inculuded_price
+        ordering_item.tax_included_price = cart_item.item.tax_included_price
         ordering_item.save
       end
       @cart_items.destroy_all

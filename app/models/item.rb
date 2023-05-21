@@ -11,7 +11,7 @@ class Item < ApplicationRecord
    enum sales_status: { on_sale: 0, draft: 1 }
 
 
-  def tax_inculuded_price
+  def tax_included_price
     (price * 1.1).floor
   end
 
