@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get 'orders/complete' => 'orders#complete', as: 'orders_complete'
     resources :orders, only: [:new, :index, :create, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :genres, only: [:index]
   end
 
   namespace :admin do
@@ -23,8 +24,10 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
   end
-  
-  
+
+get "search" => "searches#search"
+
+
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'

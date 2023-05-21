@@ -2,10 +2,13 @@
  <div class="container">
  <h4>商品詳細</h4>
  <div class="row">
-     <div class="col-lg-4">
+   <div class="col-lg-2">
+       <%= render "public/genres/surch", genres: @genres %>
+      </div>
+     <div class="col-lg-5">
      <%= image_tag @item.get_image(400,300) %>
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-5">
      <%= form_with(model: [@item, @cart_item],url: cart_items_path, method: :post,local: true)do |f| %>
     <table class="table">
      <tr>

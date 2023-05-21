@@ -1,4 +1,4 @@
- <div class="container">
+<div class="container">
    <table>
     <tr>
       <th><h1>商品一覧</h1></th> <td><h4>(全<%= @items.count%>件)</h4></td>
@@ -6,7 +6,7 @@
    </table>
     <div class="row">
       <div class="col-lg-2">
-       <%= render "public/genres/search", genres: @genres %>
+       <%= render "public/genres/surch", genres: @genres %>
       </div>
 
       <div class="col-lg-10">
@@ -27,4 +27,3 @@
         <%= paginate @items %>
     </div>
  </div>
-
