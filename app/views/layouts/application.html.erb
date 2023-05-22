@@ -17,6 +17,9 @@
   <body>
     <%= render 'layouts/header' %>
       <main class="my-5">
+        <div class="container my-5">
+        <p class="text-danger"><%= notice %></p>
+        </div>
         <%= yield %>
       </main>
     <%= render 'layouts/footer' %>
