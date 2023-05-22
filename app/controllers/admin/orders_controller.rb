@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
   def show
     @order = Order.find(params[:id])
     @formatted_post_code = @order.post_code.insert(3, "-")
