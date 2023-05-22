@@ -91,8 +91,8 @@
       </div>
       <div class="col-auto ml-auto">
          <div class="input-group">
-          <%= form_with(url: items_path, class: "form-inline my-2 my-lg-0", method: :get) do |f| %>
-            <%= f.text_field :search, value: params[:search], class: "form-control" %>
+          <%= form_with(url: items_path, class: "form-inline my-2 my-lg-0", method: :get) do |f|%>
+            <%= f.text_field :query, value: params[:query], class: "form-control", placeholder: "検索", aria_label: "検索" %>
             <div class="input-group-append">
               <%= f.submit "検索", class: "btn btn-light" %>
             </div>
