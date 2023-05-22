@@ -10,6 +10,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @ordering_items = @order.ordering_items
     if @order.update(order_params)
+      @ordering_items.update_all(production_status: 1) if @order.order_status == "paid_up"
       redirect_to admin_order_path
     else
       render :show
