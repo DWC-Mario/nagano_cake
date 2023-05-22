@@ -1,11 +1,12 @@
 class Admin::ItemsController < ApplicationController
+  before_action :authenticate_admin!
   def index
      @items=Item.all.page(params[:page]).per(10)
      @item=Item.new
   end
 
   def edit
-    @item=Item.new
+    @item = Item.find(params[:id])
   end
 
   def new
