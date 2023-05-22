@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
 
   def index
     @cart_items = current_customer.cart_items
@@ -24,7 +25,6 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @item = Item.find(params[:cart_item][:item_id])
-
     @cart_item = current_customer.cart_items.find_by(item_id: @item.id)
     @cart_item_new = current_customer.cart_items.new(cart_item_params)
     if @cart_item.present?

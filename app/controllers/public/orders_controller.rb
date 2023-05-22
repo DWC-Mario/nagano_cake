@@ -16,12 +16,20 @@ class Public::OrdersController < ApplicationController
       @order.address_name = current_customer.full_name
     elsif select_address == "1"
       @order = Order.new(order_params)
-      @address = Address.find(params[:order][:address_id])
-      @order.post_code = @address.post_code
-      @order.address = @address.address
-      @order.address_name = @address.address_name
+      if params[:order][:address_id].present?
+        @address = Address.find(params[:order][:address_id])
+        @order.post_code = @address.post_code
+        @order.address = @address.address
+        @order.address_name = @address.address_name
+      else
+        render :new
+      end
     elsif select_address == "2"
-      @order = Order.new(order_params)
+      if (params[:order][:post_code] || params[:order][:address] || params[:order][:address_name]).blank?
+        render :new
+      else
+        @order = Order.new(order_params)
+      end
     else
       render :new
     end
