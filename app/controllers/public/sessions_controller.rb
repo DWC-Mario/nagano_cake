@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  before_action :session_clear, only: [:create]
   before_action :customer_state, only: [:create]
 
   # GET /resource/sign_in
@@ -25,8 +26,12 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   def after_sign_in_path_for(resource)
-    customer_path
+    root_path
   end
+
+ def session_clear
+   session.clear
+ end
   
   private
   
@@ -52,5 +57,4 @@ class Public::SessionsController < Devise::SessionsController
       redirect_to  new_customer_registration_path
     end
   end
-  
 end

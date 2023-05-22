@@ -1,11 +1,20 @@
 class Public::ItemsController < ApplicationController
   def index
     @items=Item.all.page(params[:page]).per(8)
+    @items_count=Item.all
+    @genres=Genre.all
+    if params[:query].present?
+      @items=Item.where('item_name LIKE ?', '%' + params[:query] + '%').page(params[:page]).per(8)
+      @items_count=Item.all.where('item_name LIKE ?', '%' + params[:query] + '%')
+    end
+
   end
 
   def show
      @item = Item.find(params[:id])
      @cart_item = CartItem.new
+     @genre=Genre.find(params[:id])
+      @genres=Genre.all
   end
 
    private
