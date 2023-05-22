@@ -1,13 +1,18 @@
-<table>
-<tr>
-  <th><h1>商品一覧</h1></th> <td><h4>(全<%= @items.count%>件)</h4></td>
-</tr>
-</table>
+ <div class="container">
+   <table>
+    <tr>
+      <th><h1>商品一覧</h1></th> <td><h4>(全<%= @items_count.count%>件)</h4></td>
+    </tr>
+   </table>
+    <div class="row">
+      <!--<div class="col-lg-2">-->
+      <!-- %= render "public/genres/search", genres: @genres %>-->
+      <!--</div>-->
 
-<div class="container">
-  <div class="row">
+
+
   <% @items.each do |item| %>
-  <div class="col-md-3">
+  <!--<div class="col-md-3">-->
   <div class="item-box">
 
       <%= image_tag item.get_image(200,200) %><br>
@@ -17,11 +22,10 @@
 
 
   </div>
-  </div>
+  <!--</div>-->
   <% end %>
- 
+</div>
   <%= paginate @items %>
-  
+
   </div>
 </div>
-

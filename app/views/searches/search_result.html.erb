@@ -1,0 +1,29 @@
+<div class="container">
+   <table>
+    <tr>
+      <th><h1>商品一覧</h1></th> <td><h4>(全<%= @items.count%>件)</h4></td>
+    </tr>
+   </table>
+    <div class="row">
+      <div class="col-lg-2">
+       <%= render "public/genres/surch", genres: @genres %>
+      </div>
+
+      <div class="col-lg-10">
+       <table>
+         <tbody>
+           <tr class="item-box">
+        <% @items.each do |item| %>
+        <td class="item">
+        <%= image_tag item.get_image(200,200) %><br>
+        <%=link_to item.item_name, item_path(item.id) %><br>
+        ¥<%= item.price %>
+        </td>
+        <% end %>
+        </tr>
+        </tbody>
+       </table>
+      </div>
+        <%= paginate @items %>
+    </div>
+ </div>
