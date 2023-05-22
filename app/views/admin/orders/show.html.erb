@@ -1,2 +1,97 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container my-5">
+	<h5 class="d-inline bg-light">注文履歴詳細</h5>
+	<%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
+	<table class="table table-borderless">
+		<tr>
+			<td class="col-2 bg-light">購入者</td>
+			<td class="col-10"><%= @order.customer.last_name %>　<%= @order.customer.first_name %></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="bg-light">注文日</td>
+			<td><%= @order.customer.last_name_kana %>　<%= @order.customer.first_name_kana %></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="bg-light">配送先</td>
+			<td>〒<%= @formatted_post_code %>  <%= @order.address %></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="bg-light"></td>
+			<td><%= @order.address_name %></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="bg-light">支払方法</td>
+			<td><%= t("enums.order.how_to_pay.#{@order.how_to_pay}") %></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="bg-light">注文ステータス</td>
+			<td><%= f.select :order_status, Order.order_statuses.keys.map { |k| [t("enums.order.order_status.#{k}"), k] }, selected: @order.order_status %>
+			    <%= f.submit "更新", class: "btn btn-success" %></td>
+		</tr>
+	</table>
+	<% end %>
+	<div class="row">
+		<div>
+		
+		<table class="table table-borderless">
+		<tr>
+			<th class="bg-light">商品名</th>
+			<th class="bg-light">単価（税込）</th>
+			<th class="bg-light">数量</th>
+			<th class="bg-light">小計</th>
+			<th class="bg-light">製作ステータス</th>
+			<th class="bg-light"></th>
+		</tr>
+		
+			<% @ordering_items.each do |ordering_item| %>
+			<%= form_with model: ordering_item, url: admin_order_detail_path, method: :patch do |f| %>
+			<%= f.hidden_field :id %>
+			<tr>
+				<td>
+					<%= ordering_item.item.item_name %>
+				</td>
+				<td>
+					<%= ordering_item.tax_included_price %>
+				</td>
+				<td>
+					<%= ordering_item.count %>
+				</td>
+				<td>
+					<%= ordering_item.subtotal %>
+				</td>
+				<td><%= f.select :production_status, OrderingItem.production_statuses.keys.map { |k| [t("enums.ordering_item.production_status.#{k}"), k] } %>
+					<%= f.submit "更新", class: "btn btn-success" %></td>
+			</tr>
+			<% end %>
+			<% end %>
+		</table>
+		
+	</div>
+	
+	<div>
+		<table class="table table-borderless">
+  <tr>
+    <td>商品合計</td>
+    <td><%= number_with_delimiter(@sum) %>円</td>
+  </tr>
+  <tr>
+    <td>送料</td>
+    <td><%= number_with_delimiter(@order.postage) %>円</td>
+  </tr>
+  <tr>
+    <td>請求合計金額</td>
+    <td><%= number_with_delimiter(@order.total_price) %>円</td>
+  </tr>
+</table>
+
+	</div>
+
+	</div>
+	
+
+
+</div>
