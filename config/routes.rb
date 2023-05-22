@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get 'orders/complete' => 'orders#complete', as: 'orders_complete'
     resources :orders, only: [:new, :index, :create, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-    resources :genres, only: [:index]
+    resources :genres, only: [:show]
   end
 
   namespace :admin do
