@@ -5,7 +5,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
-    @item=Item.new
+    @item=Item.find(params[:id])
   end
 
   def new
@@ -20,7 +20,7 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save!
+    @item.save
     flash[:notice] = "新規商品を登録しましした。"
     redirect_to admin_item_path(@item)
   end
