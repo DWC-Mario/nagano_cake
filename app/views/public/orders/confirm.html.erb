@@ -2,70 +2,73 @@
   <div class="row d-flex justify-content-between my-3 px-3">
     <h4>注文情報確認</h4>
   </div>
-  <table>
-    <tr>
-      <td>
-        <table class="table table-bordered">
-          <thead class="table-secondary">
+  <div class="row">
+    <div class="col-md-8 d-flex align-items-start">
+      <table class="table table-bordered">
+        <thead class="table-secondary">
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
             <tr>
-              <th>商品名</th>
-              <th>単価（税込）</th>
-              <th>数量</th>
-              <th>小計</th>
+              <td>
+                <%= image_tag  cart_item.item.get_image(50,50) %>
+                <%= cart_item.item.item_name %>
+              </td>
+              <td>
+                <%= cart_item.item.tax_included_price %>
+              </td>
+              <td>
+                <%= cart_item.count %>
+              </td>
+              <td>
+                <%= cart_item.subtotal %>
+              </td>
+              <% @sum += cart_item.subtotal %>
             </tr>
-          </thead>
-          <tbody>
-            <% @cart_items.each do |cart_item| %>
-              <tr>
-                <td>
-                  <%= image_tag  cart_item.item.get_image(50,50) %>
-                  <%= cart_item.item.item_name %>
-                </td>
-                <td>
-                  <%= cart_item.item.tax_included_price %>
-                </td>
-                <td>
-                  <%= cart_item.count %>
-                </td>
-                <td>
-                  <%= cart_item.subtotal %>
-                </td>
-                <% @sum += cart_item.subtotal %>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </td>
-      <td>
-        <table class="table table-bordered">
-          <tr>
-            <td class="table-secondary">送料</td>
-            <td><%= @postage %></td>
-          </tr>
-          <tr>
-            <td class="table-secondary">商品合計</td>
-            <td><%= @sum %></td>
-          </tr>
-          <tr>
-            <td class="table-secondary">請求金額</td>
-            <td><%= @postage + @sum %></td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
-  <div>
-    <h8>支払い方法</h8>
-    <%= t("enums.order.how_to_pay.#{@order.how_to_pay}") %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4 d-flex align-items-start">
+      <table class="table table-bordered">
+        <tr>
+          <td class="table-secondary">送料</td>
+          <td><%= @postage %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">商品合計</td>
+          <td><%= @sum %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">請求金額</td>
+          <td><%= @postage + @sum %></td>
+        </tr>
+      </table>
+    </div>
   </div>
-  <div>
-    <h8>お届け先</h8>
-    〒<%= @order.post_code %><%= @order.address %><br>
-    <%= @order.address_name %>
-  </div>
+  <div class="ml-3">
+    <div class="row mt-4">
+      <h6>支払い方法</h6>
+      <div class="ml-4">
+        <%= t("enums.order.how_to_pay.#{@order.how_to_pay}") %>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <h6>お届け先　</h6>
+      <div class="ml-4">
+        〒<%= @order.post_code %><%= @order.address %><br>
+        <%= @order.address_name %>
+      </div>
+    </div>
   </div>
   <div class="row">
-    <span class="px-3 mx-auto">
+    <span class="mt-3 px-3 mx-auto">
       <%= form_with model: @order, url: orders_path, method: :post, local:true do |f| %>
         <%= f.hidden_field :postage, value: @postage %>
         <%= f.hidden_field :total_price, value: @postage + @sum %>
