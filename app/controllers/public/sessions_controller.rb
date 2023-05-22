@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  before_action :session_clear, only: [:create]
   before_action :customer_state, only: [:create]
 
   # GET /resource/sign_in
@@ -10,9 +9,10 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super
+    sign_out current_admin unless current_admin.nil?
+  end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -28,10 +28,6 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resource)
     root_path
   end
-
- def session_clear
-   session.clear
- end
   
   private
   
