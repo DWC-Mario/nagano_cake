@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
 class Admin::SessionsController < Devise::SessionsController
-  before_action :session_clear, only: [:create]
-
+  
   # GET /resource/sign_in
   # def new
   #   super
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super
+    sign_out current_customer unless current_customer.nil?
+  end
 
   # DELETE /resource/sign_out
   # def destroy
@@ -25,9 +25,4 @@ class Admin::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   
-   protected
-   
-   def session_clear
-     session.clear
-   end
 end
