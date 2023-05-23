@@ -1,7 +1,13 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container">
-      <a class="navbar-brand" href="<%= root_path %>"><%= image_tag("naganoCake.png", alt: "ながのCAKEのロゴ", width: "234", height: "70") %></a>
+    <div class="row">
+      <div class=col-4>
+      <a class="navbar-brand" href="<%= root_path %>"><%= image_tag("naga_nyan.png", alt: "ながのCAKEのロゴ", width: "170", height: "150") %></a>
+      </div>
+    </div>
+      <div class="col-8">
+        <div class="row">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -73,15 +79,26 @@
             <li class="nav-item">
               <%= link_to new_customer_session_path, class: 'btn btn-light border mx-2' do %>
                 ログイン
-              <% end %>
+              <% end %><br>
             </li>
           <% end %>
+         <!-- <div class="col-auto ml-auto">-->
+         <!--<div class="input-group">-->
+          <br><%= form_with(url: items_path, class: "form-inline my-2 my-lg-0", method: :get) do |f|%>
+            <%= f.text_field :query, value: params[:query], class: "form-control", placeholder: "検索", aria_label: "検索" %>
+            <div class="input-group-append">
+              <%= f.submit "検索", class: "btn btn-light" %>
+            </div>
+          <% end %>
+      <!--  </div>-->
+      <!--</div>-->
         </ul>
       </div>
     </div>
+    </div>
+      </div>
   </nav>
-<div class="container">
-    <div class="row">
+
       <div class="col text-center">
         <% if customer_signed_in? %>
           <p class="my-0">ようこそ、<%= current_customer.last_name %>さん！</p>
@@ -89,18 +106,7 @@
           <p class="my-0">ようこそ、管理者さん！</p>
         <% end %>
       </div>
-      <div class="col-auto ml-auto">
-         <div class="input-group">
-          <%= form_with(url: items_path, class: "form-inline my-2 my-lg-0", method: :get) do |f|%>
-            <%= f.text_field :query, value: params[:query], class: "form-control", placeholder: "検索", aria_label: "検索" %>
-            <div class="input-group-append">
-              <%= f.submit "検索", class: "btn btn-light" %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
   <hr class="my-4">
 </header>
