@@ -30,7 +30,7 @@
 		<tr>
 			<td class="bg-light">注文ステータス</td>
 			<td><%= f.select :order_status, Order.order_statuses.keys.map { |k| [t("enums.order.order_status.#{k}"), k] }, selected: @order.order_status %>
-			    <%= f.submit "更新", class: "btn btn-success" %></td>
+			    <%= f.submit "更新", class: "btn btn-outline-success" %></td>
 		</tr>
 	</table>
 	<% end %>
@@ -64,7 +64,7 @@
 					¥<%= number_with_delimiter(ordering_item.subtotal) %>
 				</td>
 				<td><%= f.select :production_status, OrderingItem.production_statuses.keys.map { |k| [t("enums.ordering_item.production_status.#{k}"), k] } %>
-					<%= f.submit "更新", class: "btn btn-success" %></td>
+					<%= f.submit "更新", class: "btn btn-outline-success" %></td>
 			</tr>
 			<% end %>
 			<% end %>

@@ -6,7 +6,7 @@
         <tr>
           <td>ジャンル名</td>
           <td><%= f.text_field :genre_name, autofocus: true, autocomplete: "genre_name" %></td>
-          <td><%= f.submit "新規登録", class: "btn btn-success" %></td>
+          <td><%= f.submit "新規登録", class: "btn btn-outline-primary" %></td>
         </tr>
       </table>
     <% end %>
@@ -23,7 +23,7 @@
             </td>
             <td class="text-center">
               <%= link_to edit_admin_genre_path(genre) do %>
-                <button class="btn btn-success">編集する</button>
+                <button class="btn btn-outline-success">編集する</button>
               <% end %>
             </td>
           </tr>
