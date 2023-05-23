@@ -18,7 +18,7 @@
       <th></th> <td><h5><%= @item.item_explanation %></h5></td>
      </tr>
      <tr>
-      <th></th>　<td><h5>¥<%= @item.tax_included_price %>(税込)</h5></td>
+      <th></th>　<td><h5>¥<%= number_with_delimiter(@item.tax_included_price) %>(税込)</h5></td>
      </tr>
      <tr>
       <th></th>

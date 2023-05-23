@@ -4,6 +4,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = current_customer
+    @formatted_post_code = @customer.post_code.insert(3, "-")
   end
 
   def edit

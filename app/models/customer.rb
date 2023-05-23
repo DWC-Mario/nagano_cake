@@ -19,9 +19,10 @@ class Customer < ApplicationRecord
 
   # validates_presence_of :first_name, :last_name, :last_name_kana, :first_name_kana,
                         # :post_code, :address, :phone_number
-
+  
   def full_address
-    '〒'+ post_code + '' + address
+    formatted_post_code = post_code.insert(3, "-")
+    '〒'+ formatted_post_code + ' ' + address
   end
 
   def full_name
