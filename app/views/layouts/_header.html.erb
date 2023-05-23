@@ -84,13 +84,6 @@
                   <% end %><br>
                 </li>
               <% end %>
-              <br>
-              <%= form_with(url: items_path, class: "form-inline my-2 my-lg-0", method: :get) do |f| %>
-                <%= f.text_field :query, value: params[:query], class: "form-control", placeholder: "検索", aria_label: "検索" %>
-                <div class="input-group-append">
-                  <%= f.submit "検索", class: "btn btn-light" %>
-                </div>
-              <% end %>
             </ul>
           </div>
         </div>
@@ -101,7 +94,15 @@
             <% elsif admin_signed_in? %>
               <p class="my-0">ようこそ、管理者さん！</p>
             <% end %>
-          </div>
+            </div>
+            <div class="mx-auto">
+            <%= form_with(url: items_path, class: "form-inline my-2 my-lg-0", method: :get) do |f| %>
+              <%= f.text_field :query, value: params[:query], class: "form-control", placeholder: "検索", aria_label: "検索" %>
+              <div class="input-group-append">
+                <%= f.submit "検索", class: "btn btn-light" %>
+              </div>
+            <% end %>
+            </div>
         </div>
       </div>
     </div>

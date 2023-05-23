@@ -1,0 +1,85 @@
+*{
+font-family: 'Yusei Magic', sans-serif;
+}
+
+.table-hover tr:not(:first-child){
+  cursor: hand; cursor:pointer;
+}
+.table-hover tr:not(:first-child):hover td{
+  background-color: silver;
+}
+.fadein {
+      opacity: 0;
+      animation: fadein 1s ease forwards;
+  }
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.txt01 {
+  animation-delay: 0.25s;
+}
+
+.txt02 {
+  animation-delay: 0.5s;
+}
+
+.txt03 {
+  animation-delay: 0.75s;
+}
+
+.txt04 {
+  animation-delay: 1s;
+}
+
+.txt05 {
+  animation-delay: 1.25s;
+}
+
+.txt06 {
+  animation-delay: 1.5s;
+}
+
+.txt07 {
+  animation-delay: 1.75s;
+}
+
+.txt08 {
+  animation-delay: 2s;
+}
+
+/* カスタムCSS */
+.custom-pagination .page-item {
+  background-color: transparent;
+}
+
+.custom-pagination .page-item a {
+  color: brown;
+  border-radius: 50%;
+}
+
+.custom-pagination .page-item:first-child a {
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+.custom-pagination .page-item:last-child a {
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.custom-pagination .page-item.active {
+  background-color: transparent;
+}
+
+.custom-pagination .page-item.active a {
+  color: brown;
+  border-color: transparent;
+  background-color: transparent;
+}
+
