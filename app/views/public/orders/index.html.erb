@@ -30,7 +30,7 @@
                 <% end %>
               </td>
               <td>
-                <%= order.total_price %>円
+                ¥<%= number_with_delimiter(order.total_price) %>
               </td>
               <td>
                 <%= t("enums.order.order_status.#{order.order_status}") %>

@@ -33,15 +33,15 @@
       <table class="table table-bordered">
         <tr>
           <td class="table-secondary" style="width: 100px;">商品合計</td>
-          <td><%= @sum %></td>
+          <td>¥<%= number_with_delimiter(@sum) %></td>
         </tr>
         <tr>
           <td class="table-secondary">配送料</td>
-          <td><%= @order.postage %></td>
+          <td>¥<%= number_with_delimiter(@order.postage) %></td>
         </tr>
         <tr>
           <td class="table-secondary">ご請求額</td>
-          <td><%= @order.total_price %></td>
+          <td>¥<%= number_with_delimiter(@order.total_price) %></td>
         </tr>
       </table>
     </div>
@@ -64,13 +64,13 @@
               <%= ordering_item.item.item_name %>
             </td>
             <td>
-              <%= ordering_item.tax_included_price %>
+              ¥<%= number_with_delimiter(ordering_item.tax_included_price) %>
             </td>
             <td>
               <%= ordering_item.count %>
             </td>
             <td>
-              <%= ordering_item.subtotal %>円
+              ¥<%= number_with_delimiter(ordering_item.subtotal) %>
             </td>
           </tr>
         <% end %>
