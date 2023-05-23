@@ -55,13 +55,13 @@
 					<%= ordering_item.item.item_name %>
 				</td>
 				<td>
-					<%= ordering_item.tax_included_price %>
+					¥<%= number_with_delimiter(ordering_item.tax_included_price) %>
 				</td>
 				<td>
 					<%= ordering_item.count %>
 				</td>
 				<td>
-					<%= ordering_item.subtotal %>
+					¥<%= number_with_delimiter(ordering_item.subtotal) %>
 				</td>
 				<td><%= f.select :production_status, OrderingItem.production_statuses.keys.map { |k| [t("enums.ordering_item.production_status.#{k}"), k] } %>
 					<%= f.submit "更新", class: "btn btn-success" %></td>
@@ -76,15 +76,15 @@
 		<table class="table table-borderless">
   <tr>
     <td>商品合計</td>
-    <td><%= number_with_delimiter(@sum) %>円</td>
+    <td>¥<%= number_with_delimiter(@sum) %></td>
   </tr>
   <tr>
     <td>送料</td>
-    <td><%= number_with_delimiter(@order.postage) %>円</td>
+    <td>¥<%= number_with_delimiter(@order.postage) %></td>
   </tr>
   <tr>
     <td>請求合計金額</td>
-    <td><%= number_with_delimiter(@order.total_price) %>円</td>
+    <td>¥<%= number_with_delimiter(@order.total_price) %></td>
   </tr>
 </table>
 

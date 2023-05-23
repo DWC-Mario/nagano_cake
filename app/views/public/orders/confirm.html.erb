@@ -22,15 +22,15 @@
                   <%= cart_item.item.item_name %>
                 </td>
                 <td>
-                  <%= cart_item.item.tax_included_price %>
+                  ¥<%= number_with_delimiter(cart_item.item.tax_included_price) %>
                 </td>
                 <td>
                   <%= cart_item.count %>
                 </td>
                 <td>
-                  <%= cart_item.subtotal %>
+                 ¥<%= number_with_delimiter(cart_item.subtotal) %>
                 </td>
-                <% @sum += cart_item.subtotal %>
+                ¥<% number_with_delimiter(@sum += cart_item.subtotal) %>
               </tr>
             <% end %>
           </tbody>
@@ -40,15 +40,15 @@
         <table class="table table-bordered">
           <tr>
             <td class="table-secondary">送料</td>
-            <td><%= @postage %></td>
+            <td>¥<%= number_with_delimiter(@postage) %></td>
           </tr>
           <tr>
             <td class="table-secondary">商品合計</td>
-            <td><%= @sum %></td>
+            <td>¥<%= number_with_delimiter(@sum) %></td>
           </tr>
           <tr>
             <td class="table-secondary">請求金額</td>
-            <td><%= @postage + @sum %></td>
+            <td>¥<%= number_with_delimiter(@postage + @sum) %></td>
           </tr>
         </table>
       </td>
@@ -60,7 +60,7 @@
   </div>
   <div>
     <h8>お届け先</h8>
-    〒<%= @order.post_code %><%= @order.address %><br>
+    〒<%= @formatted_post_code %>&nbsp;<%= @order.address %><br>
     <%= @order.address_name %>
   </div>
   </div>

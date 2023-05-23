@@ -7,6 +7,7 @@ class Address < ApplicationRecord
   validates :address_name,  format: { with: /\A[ぁ-んァ-ン一-龥a-zA-Z]+\z/ }
 
   def address_display
+    formatted_post_code = post_code.insert(3, "-")
     '〒'+ post_code + '　' + address + '　' + address_name
   end
 

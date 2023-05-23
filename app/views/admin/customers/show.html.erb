@@ -15,7 +15,7 @@
 		</tr>
 		<tr>
 			<td>郵便番号</td>
-			<td><%= @customer.post_code %></td>
+			<td>〒<%= @customer.post_code.insert(3, "-") %></td>
 		</tr>
 		<tr>
 			<td>住所</td>
