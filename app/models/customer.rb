@@ -17,16 +17,16 @@ class Customer < ApplicationRecord
   validates :phone_number,    format: { with: /\A\d{10,11}\z/ }
 
 
-  # validates_presence_of :first_name, :last_name, :last_name_kana, :first_name_kana,
-                        # :post_code, :address, :phone_number
-  
   def full_address
-    formatted_post_code = post_code.insert(3, "-")
-    '〒'+ formatted_post_code + ' ' + address
+    '〒'+ post_code.insert(3, "-") + ' ' + address
   end
 
   def full_name
-    last_name + first_name
+    last_name + ' ' +  first_name
+  end
+  
+  def full_name_kana
+    last_name_kana + ' ' +  first_name_kana
   end
 
 end

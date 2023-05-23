@@ -12,7 +12,6 @@ class Public::OrdersController < ApplicationController
     if select_address == "0"
       @order = Order.new(order_params)
       @order.post_code = current_customer.post_code
-      @formatted_post_code = @order.post_code.insert(3, "-")
       @order.address = current_customer.address
       @order.address_name = current_customer.full_name
     elsif select_address == "1"
@@ -20,7 +19,6 @@ class Public::OrdersController < ApplicationController
       if params[:order][:address_id].present?
         @address = Address.find(params[:order][:address_id])
         @order.post_code = @address.post_code
-        @formatted_post_code = @order.post_code.insert(3, "-")
         @order.address = @address.address
         @order.address_name = @address.address_name
       else
@@ -31,8 +29,6 @@ class Public::OrdersController < ApplicationController
         render :new
       else
         @order = Order.new(order_params)
-        @formatted_post_code = @order.post_code.insert(3, "-")
-
       end
     else
       render :new

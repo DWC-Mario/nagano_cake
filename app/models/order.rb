@@ -16,8 +16,4 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :ordering_items
 
-  validates :post_code, presence: true
-  validates :address, presence: true
-  validates :address_name, presence: true
-
 end

@@ -63,7 +63,7 @@
     <div class="row mt-4">
       <h6>お届け先</h6>
       <div class="ml-4">
-        〒<%= @formatted_post_code %>&nbsp;<%= @order.address %><br>
+        〒<%= @order.post_code.insert(3, "-") %>&nbsp;<%= @order.address %><br>
         <%= @order.address_name %>
       </div>
     </div>
