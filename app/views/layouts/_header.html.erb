@@ -3,7 +3,7 @@
     <div class="container">
     <div class="row">
       <div class=col-4>
-      <a class="navbar-brand" href="<%= root_path %>"><%= image_tag("naga_nyan.png", alt: "ながのCAKEのロゴ", width: "200", height: "170") %></a>
+      <a class="navbar-brand" href="<%= root_path %>"><%= image_tag("naga_nyan.png", alt: "ながのCAKEのロゴ", width: "170", height: "150") %></a>
       </div>
     </div>
       <div class="col-8">
@@ -79,16 +79,26 @@
             <li class="nav-item">
               <%= link_to new_customer_session_path, class: 'btn btn-light border mx-2' do %>
                 ログイン
-              <% end %>
+              <% end %><br>
             </li>
           <% end %>
+         <!-- <div class="col-auto ml-auto">-->
+         <!--<div class="input-group">-->
+          <br><%= form_with(url: items_path, class: "form-inline my-2 my-lg-0", method: :get) do |f|%>
+            <%= f.text_field :query, value: params[:query], class: "form-control", placeholder: "検索", aria_label: "検索" %>
+            <div class="input-group-append">
+              <%= f.submit "検索", class: "btn btn-light" %>
+            </div>
+          <% end %>
+      <!--  </div>-->
+      <!--</div>-->
         </ul>
       </div>
     </div>
     </div>
       </div>
   </nav>
-    
+
       <div class="col text-center">
         <% if customer_signed_in? %>
           <p class="my-0">ようこそ、<%= current_customer.last_name %>さん！</p>
@@ -96,18 +106,7 @@
           <p class="my-0">ようこそ、管理者さん！</p>
         <% end %>
       </div>
-      <div class="row">
-      <div class="col-auto ml-auto">
-         <div class="input-group">
-          <%= form_with(url: items_path, class: "form-inline my-2 my-lg-0", method: :get) do |f|%>
-            <%= f.text_field :query, value: params[:query], class: "form-control", placeholder: "検索", aria_label: "検索" %>
-            <div class="input-group-append">
-              <%= f.submit "検索", class: "btn btn-light" %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      </div>
+
 
   <hr class="my-4">
 </header>
