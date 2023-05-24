@@ -1,55 +1,55 @@
 <div class="container my-5">
-  <h5 class="d-inline bg-light">会員情報</h5>
+  <h5 class="d-inline highlight">会員情報</h5>
   <div class="my-4">
     <%= form_with model: @customer, url: customers_path, method: :patch do |f| %>
       <table>
         <tr>
           <td class="py-2">名前</td>
           <td><%= f.label :last_name, "(姓)"%></td>
-          <td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name"%></td>
+          <td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "custom-input" %></td>
           <td><%= f.label :first_name, "(名)"%></td>
-          <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
+          <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "custom-input" %></td>
         </tr>
         <tr>
           <td class="py-2">フリガナ</td>
           <td><%= f.label :last_name_kana, "(セイ)"%></td>
-          <td><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana"%></td>
+          <td><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", class: "custom-input" %></td>
           <td><%= f.label :first_name_kana, "(メイ)"%></td>
-          <td><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana"%></td>
+          <td><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", class: "custom-input" %></td>
         </tr>
         <tr>
           <td class="py-1"><%= f.label :email, "メールアドレス"%></td>
           <td></td>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "custom-input" %></td>
           <td></td>
           <td></td>
         </tr>
         <tr>
           <td class="py-1"><%= f.label :post_code, "郵便番号(ハイフンなし)" %></td>
           <td></td>
-          <td><%= f.text_field :post_code, autofocus: true, autocomplete: "post_code"%></td>
+          <td><%= f.text_field :post_code, autofocus: true, autocomplete: "post_code", class: "custom-input" %></td>
           <td></td>
           <td></td>
         </tr>
         <tr>
           <td class="py-1"><%= f.label :address, "住所" %></td>
           <td></td>
-          <td colspan="4"><%= f.text_field :address, autofocus: true, autocomplete: "address", class: "w-100" %></td>
+          <td colspan="4"><%= f.text_field :address, autofocus: true, autocomplete: "address", class: "w-100 custom-input" %></td>
         </tr>
         <tr>
           <td class="py-1"><%= f.label :phone_number, "電話番号(ハイフンなし)" %></td>
           <td></td>
-          <td><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %></td>
+          <td><%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "custom-input" %></td>
           <td></td>
           <td></td>
         </tr>
         <tr>
           <td></td>
           <td></td>
-          <td class="pt-3" colspan="2"><%= f.submit "編集内容を保存", class: "btn btn-outline-success" %></td>
+          <td class="pt-3" colspan="2"><%= f.submit "編集内容を保存", class: "btn custom-button" %></td>
           <td></td>
           <td class="pt-3"><%= link_to customer_confirm_path do %>
-	        		  <button class="btn btn-outline-danger">退会する</button>
+	        		  <button class="btn delete-button">退会する</button>
 	          	<% end %>
 		      </td>
         </tr>

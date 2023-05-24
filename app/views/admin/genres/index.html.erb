@@ -1,12 +1,12 @@
 <div class="container w-50">
-  <h5 class="d-inline bg-light">ジャンル一覧・追加</h5>
+  <h5 class="d-inline ighlight">ジャンル一覧・追加</h5>
   <div class="my-4">
     <%= form_with model: @genre, url: admin_genres_path do |f| %>
       <table class="table table-borderless">
         <tr>
           <td>ジャンル名</td>
-          <td><%= f.text_field :genre_name, autofocus: true, autocomplete: "genre_name" %></td>
-          <td><%= f.submit "新規登録", class: "btn btn-outline-primary" %></td>
+          <td><%= f.text_field :genre_name, autofocus: true, autocomplete: "genre_name", class: "custom-input" %></td>
+          <td><%= f.submit "新規登録", class: "btn custom-button" %></td>
         </tr>
       </table>
     <% end %>
@@ -23,7 +23,7 @@
             </td>
             <td class="text-center">
               <%= link_to edit_admin_genre_path(genre) do %>
-                <button class="btn btn-outline-success">編集する</button>
+                <button class="btn custom-button">編集する</button>
               <% end %>
             </td>
           </tr>

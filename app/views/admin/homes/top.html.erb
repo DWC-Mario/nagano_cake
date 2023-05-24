@@ -1,16 +1,16 @@
 <div class="container">
   <% if @customer.present? %>
-    <h5 class="d-inline bg-light"><%= @customer.full_name %>さんの注文一覧</h5>
+    <h5 class="d-inline highlight"><%= @customer.full_name %>さんの注文一覧</h5>
   <% else %>
-    <h5 class="d-inline bg-light">注文履歴一覧</h5>
+    <h5 class="d-inline highlight">注文履歴一覧</h5>
   <% end %>
   <div class="my-4">
       <table class="table table-hover">
         <tr>
-          <th class="bg-light">購入日時</th>
-          <th class="bg-light">購入者</th>
-          <th class="bg-light">注文個数</th>
-          <th class="bg-light">注文ステータス</th>
+          <th class="custom-header">購入日時</th>
+          <th class="custom-header">購入者</th>
+          <th class="custom-header">注文個数</th>
+          <th class="custom-header">注文ステータス</th>
         </tr>
          <% @orders.each do |order| %>
           <tr class="table-link" data-href="/admin/orders/<%= order.id %>" >

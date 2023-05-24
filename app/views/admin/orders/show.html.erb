@@ -1,97 +1,89 @@
 <div class="container my-5">
-	<h5 class="d-inline bg-light">注文履歴詳細</h5>
+	<h5 class="d-inline highlight">注文履歴詳細</h5>
 	<%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
-	<table class="table table-borderless">
-		<tr>
-			<td class="col-2 bg-light">購入者</td>
-			<td class="col-10"><%= @order.customer.last_name %>　<%= @order.customer.first_name %></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td class="bg-light">注文日</td>
-			<td><%= @order.customer.last_name_kana %>　<%= @order.customer.first_name_kana %></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td class="bg-light">配送先</td>
-			<td>〒<%= @formatted_post_code %>  <%= @order.address %></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td class="bg-light"></td>
-			<td><%= @order.address_name %></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td class="bg-light">支払方法</td>
-			<td><%= t("enums.order.how_to_pay.#{@order.how_to_pay}") %></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td class="bg-light">注文ステータス</td>
-			<td><%= f.select :order_status, Order.order_statuses.keys.map { |k| [t("enums.order.order_status.#{k}"), k] }, selected: @order.order_status %>
-			    <%= f.submit "更新", class: "btn btn-outline-success" %></td>
-		</tr>
-	</table>
+		<table class="table table-bordered mt-3">
+			<tr>
+				<td class="col-2 custom-td">購入者</td>
+				<td class="col-10"><%= @order.customer.full_name %></td>
+			</tr>
+			<tr>
+				<td class="custom-td">注文日</td>
+				<td><%= @order.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d') %></td>
+			</tr>
+			<tr>
+				<td class="custom-td">配送先</td>
+				<td>
+					〒<%= @order.post_code %>  <%= @order.address %><br>
+					<%= @order.address_name %>
+				</td>
+			</tr>
+			<tr>
+				<td class="custom-td">支払方法</td>
+				<td><%= t("enums.order.how_to_pay.#{@order.how_to_pay}") %></td>
+			</tr>
+			<tr>
+				<td class="custom-td">注文ステータス</td>
+				<td>
+					<%= f.select :order_status, Order.order_statuses.keys.map { |k| [t("enums.order.order_status.#{k}"), k] }, selected: @order.order_status %>
+				  <%= f.submit "更新", class: "btn custom-button" %>
+				 </td>
+			</tr>
+		</table>
 	<% end %>
 	<div class="row">
-		<div>
-		
-		<table class="table table-borderless">
-		<tr>
-			<th class="bg-light">商品名</th>
-			<th class="bg-light">単価（税込）</th>
-			<th class="bg-light">数量</th>
-			<th class="bg-light">小計</th>
-			<th class="bg-light">製作ステータス</th>
-			<th class="bg-light"></th>
-		</tr>
-		
-			<% @ordering_items.each do |ordering_item| %>
-			<%= form_with model: ordering_item, url: admin_order_detail_path, method: :patch do |f| %>
-			<%= f.hidden_field :id %>
-			<tr>
-				<td>
-					<%= ordering_item.item.item_name %>
-				</td>
-				<td>
-					¥<%= number_with_delimiter(ordering_item.tax_included_price) %>
-				</td>
-				<td>
-					<%= ordering_item.count %>
-				</td>
-				<td>
-					¥<%= number_with_delimiter(ordering_item.subtotal) %>
-				</td>
-				<td><%= f.select :production_status, OrderingItem.production_statuses.keys.map { |k| [t("enums.ordering_item.production_status.#{k}"), k] } %>
-					<%= f.submit "更新", class: "btn btn-outline-success" %></td>
-			</tr>
-			<% end %>
-			<% end %>
+	 <div class="col-md-8 d-flex align-items-start">
+    <table class="table table-bordered">
+      <thead class="custom-header">
+				<tr>
+					<th>商品名</th>
+					<th>単価（税込）</th>
+					<th>数量</th>
+					<th>小計</th>
+					<th>製作ステータス</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @ordering_items.each do |ordering_item| %>
+					<%= form_with model: ordering_item, url: admin_order_detail_path, method: :patch do |f| %>
+						<%= f.hidden_field :id %>
+						<tr>
+							<td>
+								<%= ordering_item.item.item_name %>
+							</td>
+							<td>
+								¥<%= number_with_delimiter(ordering_item.tax_included_price) %>
+							</td>
+							<td>
+								<%= ordering_item.count %>
+							</td>
+							<td>
+								¥<%= number_with_delimiter(ordering_item.subtotal) %>
+							</td>
+							<td>
+								<%= f.select :production_status, OrderingItem.production_statuses.keys.map { |k| [t("enums.ordering_item.production_status.#{k}"), k] } %>
+								<%= f.submit "更新", class: "btn custom-button" %>
+							</td>
+						</tr>
+					<% end %>
+				<% end %>
+			</tbody>
 		</table>
-		
+	 </div>
+	 <div class="col-md-4 d-flex align-items-start">
+    <table class="table table-bordered">
+		  <tr>
+		    <td class="custom-td">商品合計</td>
+		    <td>¥<%= number_with_delimiter(@sum) %></td>
+		  </tr>
+		  <tr>
+		    <td class="custom-td">送料</td>
+		    <td>¥<%= number_with_delimiter(@order.postage) %></td>
+		  </tr>
+		  <tr>
+		    <td class="custom-td">請求合計金額</td>
+		    <td>¥<%= number_with_delimiter(@order.total_price) %></td>
+		  </tr>
+		</table>
+	 </div>
 	</div>
-	
-	<div>
-		<table class="table table-borderless">
-  <tr>
-    <td>商品合計</td>
-    <td>¥<%= number_with_delimiter(@sum) %></td>
-  </tr>
-  <tr>
-    <td>送料</td>
-    <td>¥<%= number_with_delimiter(@order.postage) %></td>
-  </tr>
-  <tr>
-    <td>請求合計金額</td>
-    <td>¥<%= number_with_delimiter(@order.total_price) %></td>
-  </tr>
-</table>
-
-	</div>
-
-	</div>
-	
-
-
 </div>

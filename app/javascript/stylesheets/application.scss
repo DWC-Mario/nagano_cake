@@ -16,3 +16,64 @@ body {
     background-color: #FFFFE0;
 }
 
+.custom-header,
+.custom-td {
+  background-color: rgba(139, 69, 19, 0.4);
+}
+
+.table-bordered {
+  border-collapse: collapse;
+}
+    
+.table-bordered th,
+.table-bordered td {
+  border: 2px solid rgba(139, 69, 19, 0.5);
+}
+    
+.custom-header {
+  border-bottom: 2px solid rgba(139, 69, 19, 0.7);
+}
+
+.t-bordered th,
+.t-bordered td {
+  border-top: 2px solid rgba(139, 69, 19, 0.5);
+  border-bottom: 2px solid rgba(139, 69, 19, 0.5);
+}
+
+.custom-button {
+  background-color: rgba(139, 69, 19, 0.5);
+  color: #FFFFFF;
+  border: 2px solid rgba(139, 69, 19, 0.7);
+}
+
+.delete-button {
+  background-color: rgba(255, 79, 80, 0.5);
+  color: #FFFFFF;
+  border: 2px solid rgba(255, 79, 80, 0.7);
+}
+
+.custom-input {
+  border: 2px solid rgba(139, 69, 19, 0.7);
+  border-radius: 3px;
+}
+
+.highlight {
+  background-color: rgba(206, 249, 220, 0.9);
+}
+
+
+.custom-line {
+  position: relative;
+}
+
+.custom-line::before {
+  content: "";
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 4px;
+  background-image: linear-gradient(to right, rgba(206, 249, 220, 0.9) 50%, transparent 50%);
+  background-size: 8px 100%;
+}
