@@ -15,9 +15,10 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = "ジャンル登録が完了しました。"
       redirect_to edit_admin_genre_path(@genre)
     else
-      @genres = genre.all
       flash[:error] = "error!"
       flash[:notice] = @genre.errors.full_messages
+      @genres = Genre.page(params[:page]).per(5)
+      @genre = Genre.new
       render :index
     end
   end

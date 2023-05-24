@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row d-flex justify-content-between my-3 px-3">
-    <h4>注文情報確認</h4>
+    <h4 class="d-inline highlight">注文情報確認</h4>
   </div>
   <div class="row">
     <div class="col-md-8 d-flex align-items-start">
       <table class="table table-bordered">
-        <thead class="table-secondary">
+        <thead class="custom-header">
           <tr>
             <th>商品名</th>
             <th>単価（税込）</th>
@@ -38,15 +38,15 @@
     <div class="col-md-4 d-flex align-items-start">
       <table class="table table-bordered">
         <tr>
-          <td class="table-secondary">送料</td>
+          <td class="custom-td">送料</td>
           <td>¥<%= number_with_delimiter(@postage) %></td>
         </tr>
         <tr>
-          <td class="table-secondary">商品合計</td>
+          <td class="custom-td">商品合計</td>
           <td>¥<%= number_with_delimiter(@sum) %></td>
         </tr>
         <tr>
-          <td class="table-secondary">請求金額</td>
+          <td class="custom-td">請求金額</td>
           <td>¥<%= number_with_delimiter(@postage + @sum) %></td>
         </tr>
       </table>
@@ -78,7 +78,7 @@
         <%= f.hidden_field :address, value: @order.address %>
         <%= f.hidden_field :address_name, value: @order.address_name %>
         <%= f.hidden_field :order_status, value: "payment_waiting" %>
-        <%= f.submit "注文確定する", class: "btn btn-outline-secondary" %>
+        <%= f.submit "注文確定する", class: "btn custom-button" %>
       <% end %>
     </span>
   </div>
