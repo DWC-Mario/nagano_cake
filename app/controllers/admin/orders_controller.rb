@@ -2,7 +2,6 @@ class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
   def show
     @order = Order.find(params[:id])
-    @formatted_post_code = @order.post_code.insert(3, "-")
     @ordering_items = @order.ordering_items
     @sum = @ordering_items.inject(0) { |sum, ordering_item| sum + ordering_item.subtotal }
   end
@@ -24,5 +23,5 @@ private
   def order_params
     params.require(:order).permit(:order_status)
   end
-  
+
 end
