@@ -1,13 +1,29 @@
 *{
-font-family: 'Yusei Magic', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Yusei Magic', sans-serif;
+}
+
+main {
+    background-color: #FFFFE0;
+}
+
+header {
+    background-color: #FFC7AF;
+}
+
+footer {
+    background-color: #FFC7AF;
 }
 
 .table-hover tr:not(:first-child){
   cursor: hand; cursor:pointer;
 }
 .table-hover tr:not(:first-child):hover td{
-  background-color: silver;
+  background-color: #FFC7AF;
 }
+
 .fadein {
       opacity: 0;
       animation: fadein 1s ease forwards;
@@ -19,6 +35,10 @@ font-family: 'Yusei Magic', sans-serif;
   100% {
     opacity: 1;
   }
+}
+
+.fadein:hover {
+  background-color: #FFC7AF;
 }
 
 .txt01 {
@@ -83,3 +103,132 @@ font-family: 'Yusei Magic', sans-serif;
   background-color: transparent;
 }
 
+
+/* 滑らかに変形して出現 */
+.smooth{
+	animation-name:smoothAnime;
+	animation-duration:1s;
+	animation-fill-mode:forwards;
+  transform-origin:left;
+	opacity:0;
+}
+
+@keyframes smoothAnime{
+  from {
+  transform:translate3d(0, 100%, 0) skewY(12deg);
+  opacity:0;
+  }
+
+  to {
+  transform:translate3d(0, 0, 0) skewY(0);
+  opacity:1;
+  }
+}
+
+/* 吹き出しのスタイル */
+.speech-bubble {
+  position: relative;
+  background-color: #FFC7AF;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -20px; /* 右側に調整するために値を変更 */
+  transform: translateY(-50%);
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent transparent #FFC7AF; /* 右側の色を指定 */
+}
+
+
+/* 画像とキャプションのスタイル */
+.image-container {
+  position: relative;
+}
+
+.caption {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/*About*/
+
+.headline--retreat .word {
+  animation: retreat-shrink 2s cubic-bezier(0.25, 1, 0.35, 1) infinite;
+  transform-origin: 50% 100%;
+}
+
+.headline--retreat .char {
+  --name: retreat-stretch;
+  --dur: 2s;
+  --td: ease-out;
+  transform-origin: 50% 100%;
+}
+
+@keyframes retreat-shrink {
+  15% {
+    transform: scale(1.001);
+  }
+  30%, 80% {
+    transform: scale(0.25);
+  }
+  100% {
+    transform: scale(1.001);
+  }
+}
+
+@keyframes retreat-stretch {
+  0%, 10% {
+    transform: scaleY(1);
+  }
+  15% {
+    transform: scaleY(0.5);
+  }
+  25% {
+    transform: scaleY(4) rotate(calc(var(--distance-sine) * 65deg));
+  }
+  35% {
+    transform: scaleY(0.80) rotate(calc(var(--distance-sine) * -25deg));
+  }
+  40% {
+    transform: scaleY(1.10) rotate(calc(var(--distance-sine) * 15deg));
+  }
+  44% {
+    transform: scaleY(0.98) rotate(calc(var(--distance-sine) * -10deg));
+  }
+  48% {
+    transform: scaleY(1.01) rotate(calc(var(--distance-sine) * 5deg));
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.headline--sway .char {
+  --dur: 1s;
+  --del: calc(var(--char-index) * -0.0125s);
+  --name: sway;
+  --td: linear;
+  --dir: alternate;
+}
+
+@keyframes sway {
+  from {
+    transform: skew(-15deg) rotateX(10deg);
+  }
+  to {
+    transform: skew(15deg) rotateX(-10deg);
+  }
+}

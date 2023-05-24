@@ -1,21 +1,6 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-header {
-    background-color: #FFC7AF;
-    font-family: 'Zen Kaku Gothic New', sans-serif;
-}
-
-footer {
-    background-color: #FFC7AF;
-    font-family: 'Zen Kaku Gothic New', sans-serif;
-}
-
-body {
-    font-family: 'Zen Kaku Gothic New', sans-serif;
-    background-color: #FFFFE0;
-}
-
 .custom-header,
 .custom-td {
   background-color: rgba(139, 69, 19, 0.4);

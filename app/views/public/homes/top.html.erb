@@ -1,18 +1,31 @@
+
+<div id="splash">
+<div id="splash_logo"><img src="<%= asset_path('naga_nyan.png') %>" alt="" class="fadeUp"></div>
+<!--/splash--></div>
 <div class="container">
-  <div class="mb-auto">
-    <div class="card-list-container py-5">
-      <div class="card w-50 mx-auto mt-4 shadow-lg">
-        ようこそ、ながのCAKEへ!</br>
-        このサイトは、ケーキ販売のECサイトになります。</br>
-        会員でない方も商品の閲覧はできますが、</br>
-        購入には会員登録が必要になります。</br>
-       </div>
+  <div>
+    <div class="card-list-container py-4">
+       <div class="slide-message d-flex justify-content-center">
+          <p class="slide-text">ようこそ、ながのCAKEへ!
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、
+          購入には会員登録が必要になります。</p>
+        </div>
+      <div class="mx-auto slide-show" style="background-image: url(<%= asset_path('naganyan-frame3.png') %>);">
+        <ul class="slider">
+          <% @item_images.each do |image| %>
+          <li>
+            <%= image_tag image.get_image(300,300), class: "card-img-top rounded-circle" %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
         <h3>新着商品</h3>
           <div class="mx-auto">
             <div class="row">
               <% @items.each do |item| %>
                 <div class="col-3 fadein txt0<%= @k %>">
-                  <%= link_to item_path(item.id) do %>
+                  <%= link_to item_path(item.id), class: "text-decoration-none" do %>
                     <div class="card text-dark tr-color h-100 bg-transparent border-0">
                       <%= image_tag item.get_image(238,238), class: "card-img-top rounded-circle" %>
                       <div class="card-body">
@@ -35,3 +48,25 @@
     </div>
   </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  //logoの表示
+  $(window).on('load',function(){
+    $("#splash").delay(1500).fadeOut('slow');//ローディング画面を1.5秒（1500ms）待機してからフェードアウト
+    $("#splash_logo").delay(1200).fadeOut('slow');//ロゴを1.2秒（1200ms）待機してからフェードアウト
+  });
+  // スライドショー
+	$('.slider').slick({
+		autoplay: true,//自動的に動き出すか。初期値はfalse。
+		infinite: true,//スライドをループさせるかどうか。初期値はtrue。
+		speed: 500,//スライドのスピード。初期値は300。
+		slidesToShow: 3,//スライドを画面に3枚見せる
+		slidesToScroll: 1,//1回のスクロールで1枚の写真を移動して見せる
+		prevArrow: '<div class="slick-prev"></div>',//矢印部分PreviewのHTMLを変更
+		nextArrow: '<div class="slick-next"></div>',//矢印部分NextのHTMLを変更
+		centerMode: true,//要素を中央ぞろえにする
+		variableWidth: true,//幅の違う画像の高さを揃えて表示
+		dots: false,//下部ドットナビゲーションの表示
+	});
+</script>

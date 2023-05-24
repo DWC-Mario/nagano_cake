@@ -1,31 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>NaganoCake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
-    <%= stylesheet_link_tag 'styles' %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
-    <header>
-     <%= render 'layouts/header' %>
-    </header>
-    <main class="my-5">
-      <div class="container my-5">
+<head>
+  <title>NaganoCake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+  <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+  <%= stylesheet_link_tag 'styles' %>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'load' %>
+  <%= stylesheet_link_tag 'slide-show' %>
+  <%= stylesheet_link_tag 'thanks' %>
+</head>
+<body>
+  <header>
+    <%= render 'layouts/header' %>
+  </header>
+  <main class="py-1">
+    <div class="container">
       <p class="text-danger"><%= notice %></p>
-      </div>
-      <%= yield %>
-    </main>
-    <footer>
-      <%= render 'layouts/footer' %>
-    </footer>
-  </body>
+    </div>
+    <%= yield %>
+  </main>
+  <footer>
+    <%= render 'layouts/footer' %>
+  </footer>
+  <script>
+    //logoの表示
+    function showSplash() {
+      $("#splash").delay(1500).fadeOut('slow');
+      $("#splash_logo").delay(1200).fadeOut('slow');
+    }
+
+    $(document).ready(function() {
+      // リンクをクリックした時の処理
+      $('.naga-nyan-logo').on('click', function(e) {
+        e.preventDefault(); // リンクのデフォルトの挙動をキャンセル
+        var url = $(this).attr('href');
+
+        // ロード画面を表示
+        showSplash();
+
+        // 1秒（1000ms）待機してからページ遷移
+        setTimeout(function() {
+          window.location.href = url;
+        }, 1000);
+      });
+    });
+  </script>
+</body>
 </html>
-
-
