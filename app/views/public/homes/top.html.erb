@@ -6,10 +6,10 @@
   <div>
     <div class="card-list-container py-4">
        <div class="slide-message d-flex justify-content-center">
-          <p class="slide-text">ようこそ、ながのCAKEへ!
+          <h4 class="slide-text">ようこそ、ながのCAKEへ!
           このサイトは、ケーキ販売のECサイトになります。<br>
           会員でない方も商品の閲覧はできますが、
-          購入には会員登録が必要になります。</p>
+          購入には会員登録が必要になります。</h4>
         </div>
       <div class="mx-auto slide-show" style="background-image: url(<%= asset_path('naganyan-frame3.png') %>);">
         <ul class="slider">
@@ -43,7 +43,7 @@
             </div>
           </div>
           <div class = "text-right">
-            <%= link_to "全ての商品を見る>", items_path %>
+            <%= link_to "全ての商品を見る>", items_path, class: "text-decoration-none text-brown" %>
           </div>
     </div>
   </div>

@@ -5,11 +5,7 @@ class Item < ApplicationRecord
   has_many :cart_items
   has_many :ordering_items
 
-
- validates_presence_of :item_name, :genre_id, :item_explanation, :price, :is_active
-
-   enum sales_status: { on_sale: 0, draft: 1 }
-
+ validates_presence_of :item_name, :genre_id, :item_explanation, :price
 
   def tax_included_price
     (price * 1.1).floor

@@ -9,20 +9,20 @@
       </li>
     </ul>
   </div>
-  <table class="table table-striped table-hover">
+  <table class="table table-hover">
     <tr>
-      <th>商品id</th>
-      <th>商品名</th>
-      <th>税抜き価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
+      <th class="custom-header">商品id</th>
+      <th class="custom-header">商品名</th>
+      <th class="custom-header">税抜き価格</th>
+      <th class="custom-header">ジャンル</th>
+      <th class="custom-header">ステータス</th>
     </tr>
     <% @items.each do |item| %>
       <tr class="table-link" data-href="/admin/items/<%= item.id %>">
         <td><%= item.id %></td>
         <td><%= item.item_name %></td>
         <td>¥<%= number_with_delimiter(item.price) %></td>
-        <td><%= item.genre_id %></td>
+        <td><%= item.genre.genre_name %></td>
         <td>
           <% if item.is_active == true %>
             販売中
@@ -34,8 +34,8 @@
       </tr>
     <% end %>
   </table>
-  <div class="d-flex justify-content-center">
-    <%= paginate @items %>
+  <div class="d-flex justify-content-center custom-pagination">
+    <%= paginate @items, class: "custom-pagination" %>
   </div>
 </div>
 
