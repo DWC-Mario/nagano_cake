@@ -27,13 +27,17 @@ class Public::CartItemsController < ApplicationController
     @item = Item.find(params[:cart_item][:item_id])
     @cart_item = current_customer.cart_items.find_by(item_id: @item.id)
     @cart_item_new = current_customer.cart_items.new(cart_item_params)
+
     if @cart_item.present?
+      # カートアイテムが既に存在する場合、数量を追加
       @cart_item.count += @cart_item_new.count.to_i
       @cart_item.save
     else
+      # カートアイテムが存在しない場合、新しいカートアイテムを作成
       @cart_item_new.save
       @cart_items = current_customer.cart_items
     end
+
     redirect_to cart_items_path
   end
 
@@ -42,5 +46,4 @@ class Public::CartItemsController < ApplicationController
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :count)
   end
-
 end
