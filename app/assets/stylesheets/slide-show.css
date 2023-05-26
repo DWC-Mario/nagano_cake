@@ -2,7 +2,7 @@
 スライダーのためのcss
 ===================================*/
 .slide-show {
-  height: 450px;
+  height: 475px;
   width: 85%;
   background-size: cover;
   background-position: center;
@@ -21,7 +21,7 @@
 }
 
 .slider img {
-    width:350px;
+    width: 350px;
     height: 350px;
     position: relative;
     z-index: 2;

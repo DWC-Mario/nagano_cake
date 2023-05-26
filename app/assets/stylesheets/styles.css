@@ -232,3 +232,7 @@ footer {
     transform: skew(15deg) rotateX(-10deg);
   }
 }
+
+.text-brown {
+  color: brown;
+}

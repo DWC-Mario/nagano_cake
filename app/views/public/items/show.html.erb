@@ -1,43 +1,50 @@
-
- <div class="container">
- <h4 class="d-inline highlight">商品詳細</h4>
- <div class="row">
-   <div class="col-md-2">
-       <%= render "public/genres/search", genres: @genres %>
-      </div>
-     <div class="col-md-4">
-     <%= image_tag @item.get_image(300,300) %>
+<div class="container">
+  <h4 class="d-inline highlight">商品詳細</h4>
+  <div class="row">
+    <div class="col-md-2">
+      <%= render "public/genres/search", genres: @genres %>
+    </div>
+    <div class="col-md-4">
+      <%= image_tag @item.get_image(300, 300) %>
     </div>
     <div class="col-md-6">
-     <%= form_with(model: [@item, @cart_item],url: cart_items_path, method: :post,local: true)do |f| %>
-    <table class="table t-bordered">
-     <tr>
-      <th></th> <td><h4><%= @item.item_name %></h4></td>
-     </tr>
-     <tr>
-      <th></th> <td><h5><%= @item.item_explanation %></h5></td>
-     </tr>
-     <tr>
-      <th></th>　<td><h5>¥<%= number_with_delimiter(@item.tax_included_price) %>(税込)</h5></td>
-     </tr>
-     <tr>
-      <th></th>
-       <td>
-        <% if @item.is_active == true %>
-        <%= f.label :count, "個数選択" %>
-        <%= f.select :count, [1,2,3,4,5,6,7,8,9,10] %>
-        <%= f.hidden_field :item_id, :value => @item.id %>
-       </td>
-       <td>
-        <%= f.submit "カートに入れる", class:"btn custom-button" %>
-        <% elsif @item.is_active == false %>
-        販売停止中
-        <% end %>
-       </td>
-    </tr>
-  </table>
-  <% end %>
- </div>
+      <%= form_with(model: [@item, @cart_item], url: cart_items_path, method: :post, local: true) do |f| %>
+        <table class="table t-bordered">
+          <tr>
+            <th></th>
+            <td>
+              <h4><%= @item.item_name %></h4>
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td>
+              <h5><%= @item.item_explanation %></h5>
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td>
+              <h5>¥<%= number_with_delimiter(@item.tax_included_price) %>(税込)</h5>
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td>
+              <% if @item.is_active == true %>
+              <%= f.label :count, "個数選択" %>
+              <%= f.select :count, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+              <%= f.hidden_field :item_id, value: @item.id %>
+            </td>
+            <td>
+              <%= f.submit "カートに入れる", class: "btn custom-button" %>
+              <% elsif @item.is_active == false %>
+              販売停止中
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
 </div>
-</div>
-

@@ -16,7 +16,6 @@ class Admin::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @price_in_tax=(@item.price*1.1).floor
-    # @genre=Genre.find([:id])
   end
 
   def create

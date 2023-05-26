@@ -32,8 +32,8 @@
           </tr>
         <% end %>
       </table>
-      <div class="d-flex justify-content-center">
-        <%= paginate @customers %>
+      <div class="d-flex justify-content-center custom-pagination">
+        <%= paginate @customers, class: "custom-pagination" %>
       </div>
 
   </div>

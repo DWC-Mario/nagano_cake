@@ -22,16 +22,16 @@ class Public::OrdersController < ApplicationController
         @order.address = @address.address
         @order.address_name = @address.address_name
       else
-        render :new
+        redirect_to new_order_path
       end
     elsif select_address == "2"
       if (params[:order][:post_code] || params[:order][:address] || params[:order][:address_name]).blank?
-        render :new
+        redirect_to new_order_path
       else
         @order = Order.new(order_params)
       end
     else
-      render :new
+      redirect_to  new_order_path
     end
   end
 

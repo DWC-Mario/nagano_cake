@@ -17,7 +17,6 @@ class Public::CustomersController < ApplicationController
       flash[:notice] = "会員情報を更新しました"
       redirect_to customer_path
     else
-      flash[:error] = "error!"
       flash[:notice] = @customer.errors.full_messages
       render :edit
     end

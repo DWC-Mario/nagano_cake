@@ -29,8 +29,8 @@
           </tr>
         <% end %>
       </table>
-      <div class="d-flex justify-content-center">
-        <%= paginate @genres %>
+      <div class="d-flex justify-content-center custom-pagination">
+        <%= paginate @genres, class: "custom-pagination" %>
       </div>
     </div>
   </div>

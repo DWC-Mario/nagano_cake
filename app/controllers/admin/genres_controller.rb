@@ -1,7 +1,7 @@
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @genres = Genre.page(params[:page]).per(5)
+    @genres = Genre.page(params[:page]).per(10)
     @genre = Genre.new
   end
 
@@ -13,11 +13,10 @@ class Admin::GenresController < ApplicationController
     @genre = Genre.new(genre_params)
     if @genre.save
       flash[:notice] = "ジャンル登録が完了しました。"
-      redirect_to edit_admin_genre_path(@genre)
+      redirect_to admin_genres_path
     else
-      flash[:error] = "error!"
       flash[:notice] = @genre.errors.full_messages
-      @genres = Genre.page(params[:page]).per(5)
+      @genres = Genre.page(params[:page]).per(10)
       @genre = Genre.new
       render :index
     end
@@ -29,7 +28,6 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = "ジャンルの編集しました。"
       redirect_to admin_genres_path
     else
-      flash[:error] = "error!"
       flash[:notice] = @genre.errors.full_messages
       render :edit
     end
