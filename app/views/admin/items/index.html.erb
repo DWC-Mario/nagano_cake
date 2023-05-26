@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>商品一覧</h1>
+  <div class="row">
+    <ul style="list-style: none;">
+      <li>
+        <%= link_to new_admin_item_path, class: "btn custom-button" do %>
+          <i class="fas fa-plus"></i>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <table class="table table-hover">
+    <tr>
+      <th class="custom-header">商品id</th>
+      <th class="custom-header">商品名</th>
+      <th class="custom-header">税抜き価格</th>
+      <th class="custom-header">ジャンル</th>
+      <th class="custom-header">ステータス</th>
+    </tr>
+    <% @items.each do |item| %>
+      <tr class="table-link" data-href="/admin/items/<%= item.id %>">
+        <td><%= item.id %></td>
+        <td><%= item.item_name %></td>
+        <td>¥<%= number_with_delimiter(item.price) %></td>
+        <td><%= item.genre.genre_name %></td>
+        <td>
+          <% if item.is_active == true %>
+            販売中
+          <% end %>
+          <% if item.is_active == false %>
+            販売停止中
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <div class="d-flex justify-content-center custom-pagination">
+    <%= paginate @items, class: "custom-pagination" %>
+  </div>
+</div>
+
+<script>
+  $(document).on("turbolinks:load", function() {
+    $(".table-link").on('click', function() {
+      window.location = $(this).data("href");
+    });
+  });
+</script>

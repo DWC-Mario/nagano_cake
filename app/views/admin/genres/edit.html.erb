@@ -1,0 +1,14 @@
+<div class="container w-50">
+  <h5 class="d-inline ighlight">ジャンル編集</h5>
+  <div class="my-4">
+    <%= form_with model: @genre, url: admin_genre_path, method: :patch do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <td>ジャンル名</td>
+          <td><%= f.text_field :genre_name, autofocus: true, autocomplete: "genre_name", class: "custom-input" %></td>
+          <td><%= f.submit "変更を保存", class: "btn custom-button" %></td>
+        </tr>
+      </table>
+    <% end %>
+    </div>
+  </div>

@@ -1,0 +1,56 @@
+<div class="container my-5">
+	<h5 class="d-inline highlight">マイページ</h5>
+	<div class="row py-4">
+		<h6 class="my-auto mx-4 font-weight-bold">登録情報</h6>
+		<%= link_to edit_customers_path do %>
+			<button class="btn custom-button">編集する</button>
+		<% end %>
+	</div>
+	<table class="table table-bordered">
+		<tr>
+			<td class="col-4 custom-td">氏名</td>
+			<td class="col-8"><%= @customer.full_name %></td>
+		</tr>
+		<tr>
+			<td class="custom-td">カナ</td>
+			<td><%= @customer.full_name_kana %></td>
+		</tr>
+		<tr>
+			<td class="custom-td">郵便番号</td>
+			<td>〒<%= @formatted_post_code %></td>
+		</tr>
+		<tr>
+			<td class="custom-td">住所</td>
+			<td><%= @customer.address %></td>
+		</tr>
+		<tr>
+			<td class="custom-td">電話番号</td>
+			<td><%= @customer.phone_number %></td>
+		</tr>
+		<tr>
+			<td class="custom-td">メールアドレス</td>
+			<td><%= @customer.email %></td>
+		</tr>
+	</table>
+
+	<table>
+		<tr>
+			<td class="py-4"><h6 class="my-auto mx-4 font-weight-bold ">配送先</h6></td>
+			<td>
+				<%= link_to addresses_path do %>
+					<button class="btn custom-button">一覧を見る</button>
+				<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td><h6 class="my-auto mx-4 font-weight-bold ">注文履歴</h6></td>
+			<td>
+				<%= link_to orders_path do %>
+					<button class="btn custom-button">一覧を見る</button>
+				<% end %>
+			</td>
+		</tr>
+	</table>
+
+
+</div>
